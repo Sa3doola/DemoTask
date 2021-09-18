@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10B1DD8B871A491DB8379A2A /* Pods_DakhilTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B7B8B37662B7388E890D71E /* Pods_DakhilTask.framework */; };
+		D9206F9E26F6448000B017B9 /* ProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206F9926F6448000B017B9 /* ProductPresenter.swift */; };
+		D9206F9F26F6448000B017B9 /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206F9A26F6448000B017B9 /* ProductRouter.swift */; };
+		D9206FA026F6448000B017B9 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206F9B26F6448000B017B9 /* ProductViewController.swift */; };
+		D9206FA126F6448000B017B9 /* ProductInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206F9C26F6448000B017B9 /* ProductInteractor.swift */; };
+		D9206FA226F6448000B017B9 /* ProductConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206F9D26F6448000B017B9 /* ProductConfigurator.swift */; };
+		D9206FB526F6648700B017B9 /* OrderDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206FB026F6648700B017B9 /* OrderDetailsPresenter.swift */; };
+		D9206FB626F6648700B017B9 /* OrderDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206FB126F6648700B017B9 /* OrderDetailsRouter.swift */; };
+		D9206FB726F6648700B017B9 /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206FB226F6648700B017B9 /* OrderDetailsViewController.swift */; };
+		D9206FB826F6648700B017B9 /* OrderDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206FB326F6648700B017B9 /* OrderDetailsInteractor.swift */; };
+		D9206FB926F6648700B017B9 /* OrderDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206FB426F6648700B017B9 /* OrderDetailsConfigurator.swift */; };
+		D9206FBF26F6654400B017B9 /* CategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9206FBD26F6654400B017B9 /* CategoryTableCell.swift */; };
+		D9206FC026F6654400B017B9 /* CategoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9206FBE26F6654400B017B9 /* CategoryTableCell.xib */; };
 		D948E96526F4B99200074298 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E96426F4B99200074298 /* AppDelegate.swift */; };
 		D948E96726F4B99200074298 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E96626F4B99200074298 /* SceneDelegate.swift */; };
 		D948E96926F4B99200074298 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E96826F4B99200074298 /* SplashViewController.swift */; };
@@ -46,11 +59,6 @@
 		D948E9F426F4C1C600074298 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9EF26F4C1C600074298 /* CartViewController.swift */; };
 		D948E9F526F4C1C600074298 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9F026F4C1C600074298 /* CartInteractor.swift */; };
 		D948E9F626F4C1C600074298 /* CartConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9F126F4C1C600074298 /* CartConfigurator.swift */; };
-		D948E9FD26F4C1DC00074298 /* CartDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9F826F4C1DC00074298 /* CartDetailsPresenter.swift */; };
-		D948E9FE26F4C1DC00074298 /* CartDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9F926F4C1DC00074298 /* CartDetailsRouter.swift */; };
-		D948E9FF26F4C1DC00074298 /* CartDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9FA26F4C1DC00074298 /* CartDetailsViewController.swift */; };
-		D948EA0026F4C1DC00074298 /* CartDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9FB26F4C1DC00074298 /* CartDetailsInteractor.swift */; };
-		D948EA0126F4C1DC00074298 /* CartDetailsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D948E9FC26F4C1DC00074298 /* CartDetailsConfigurator.swift */; };
 		D94E150226F52B3500687BC3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94E150126F52B3500687BC3 /* MapViewController.swift */; };
 		D9F6C28626F5331E000BE44C /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C28526F5331E000BE44C /* Extentions.swift */; };
 		D9F6C28926F53347000BE44C /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C28826F53347000BE44C /* UIView+Extentions.swift */; };
@@ -69,6 +77,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9890E2979DA3456DBF613D42 /* Pods-DakhilTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DakhilTask.release.xcconfig"; path = "Target Support Files/Pods-DakhilTask/Pods-DakhilTask.release.xcconfig"; sourceTree = "<group>"; };
+		9B7B8B37662B7388E890D71E /* Pods_DakhilTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DakhilTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9206F9926F6448000B017B9 /* ProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresenter.swift; sourceTree = "<group>"; };
+		D9206F9A26F6448000B017B9 /* ProductRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
+		D9206F9B26F6448000B017B9 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		D9206F9C26F6448000B017B9 /* ProductInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInteractor.swift; sourceTree = "<group>"; };
+		D9206F9D26F6448000B017B9 /* ProductConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductConfigurator.swift; sourceTree = "<group>"; };
+		D9206FB026F6648700B017B9 /* OrderDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsPresenter.swift; sourceTree = "<group>"; };
+		D9206FB126F6648700B017B9 /* OrderDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsRouter.swift; sourceTree = "<group>"; };
+		D9206FB226F6648700B017B9 /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
+		D9206FB326F6648700B017B9 /* OrderDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsInteractor.swift; sourceTree = "<group>"; };
+		D9206FB426F6648700B017B9 /* OrderDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsConfigurator.swift; sourceTree = "<group>"; };
+		D9206FBD26F6654400B017B9 /* CategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableCell.swift; sourceTree = "<group>"; };
+		D9206FBE26F6654400B017B9 /* CategoryTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableCell.xib; sourceTree = "<group>"; };
 		D948E96126F4B99200074298 /* DakhilTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DakhilTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D948E96426F4B99200074298 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D948E96626F4B99200074298 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,11 +132,6 @@
 		D948E9EF26F4C1C600074298 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D948E9F026F4C1C600074298 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
 		D948E9F126F4C1C600074298 /* CartConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartConfigurator.swift; sourceTree = "<group>"; };
-		D948E9F826F4C1DC00074298 /* CartDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetailsPresenter.swift; sourceTree = "<group>"; };
-		D948E9F926F4C1DC00074298 /* CartDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetailsRouter.swift; sourceTree = "<group>"; };
-		D948E9FA26F4C1DC00074298 /* CartDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetailsViewController.swift; sourceTree = "<group>"; };
-		D948E9FB26F4C1DC00074298 /* CartDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetailsInteractor.swift; sourceTree = "<group>"; };
-		D948E9FC26F4C1DC00074298 /* CartDetailsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetailsConfigurator.swift; sourceTree = "<group>"; };
 		D94E150126F52B3500687BC3 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D9F6C28526F5331E000BE44C /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		D9F6C28826F53347000BE44C /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
@@ -130,6 +147,7 @@
 		D9F6C2AE26F541BF000BE44C /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		D9F6C2B626F541F5000BE44C /* OfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
 		D9F6C2B726F541F5000BE44C /* OfferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCell.xib; sourceTree = "<group>"; };
+		FFAB365DA67F348708720F13 /* Pods-DakhilTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DakhilTask.debug.xcconfig"; path = "Target Support Files/Pods-DakhilTask/Pods-DakhilTask.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,17 +155,80 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10B1DD8B871A491DB8379A2A /* Pods_DakhilTask.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C049C0557C678D1EA613EBC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B7B8B37662B7388E890D71E /* Pods_DakhilTask.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9206F8B26F636FF00B017B9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		D9206F9626F6444900B017B9 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				D9206F9726F6446500B017B9 /* View */,
+				D9206F9826F6446A00B017B9 /* Pattern */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
+		D9206F9726F6446500B017B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D9206F9B26F6448000B017B9 /* ProductViewController.swift */,
+				D9206FA626F6448E00B017B9 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D9206F9826F6446A00B017B9 /* Pattern */ = {
+			isa = PBXGroup;
+			children = (
+				D9206F9926F6448000B017B9 /* ProductPresenter.swift */,
+				D9206F9A26F6448000B017B9 /* ProductRouter.swift */,
+				D9206F9C26F6448000B017B9 /* ProductInteractor.swift */,
+				D9206F9D26F6448000B017B9 /* ProductConfigurator.swift */,
+			);
+			path = Pattern;
+			sourceTree = "<group>";
+		};
+		D9206FA626F6448E00B017B9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D9206FBC26F6651F00B017B9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D9206FBD26F6654400B017B9 /* CategoryTableCell.swift */,
+				D9206FBE26F6654400B017B9 /* CategoryTableCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D948E95826F4B99200074298 = {
 			isa = PBXGroup;
 			children = (
 				D948E96326F4B99200074298 /* DakhilTask */,
 				D948E96226F4B99200074298 /* Products */,
+				FF1ADD96241AC0CEA1E7D40E /* Pods */,
+				C049C0557C678D1EA613EBC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				D948E97F26F4BC8D00074298 /* Resources */,
+				D9206F8B26F636FF00B017B9 /* Manager */,
 				D948E97E26F4BC8600074298 /* Utilities */,
 				D948E97D26F4BC5900074298 /* Network */,
 				D948E97C26F4BC4B00074298 /* Model */,
@@ -270,6 +352,7 @@
 			children = (
 				D948E9CA26F4C02600074298 /* Main */,
 				D948E9CD26F4C0C600074298 /* Category */,
+				D9206F9626F6444900B017B9 /* Product */,
 				D948E9CB26F4C03100074298 /* Cart */,
 				D948E9CC26F4C03700074298 /* CartDetails */,
 			);
@@ -477,6 +560,7 @@
 			isa = PBXGroup;
 			children = (
 				D948E9E426F4C1A800074298 /* CategoryViewController.swift */,
+				D9206FBC26F6651F00B017B9 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -503,10 +587,10 @@
 		D948E9D426F4C15800074298 /* Pattern */ = {
 			isa = PBXGroup;
 			children = (
-				D948E9F826F4C1DC00074298 /* CartDetailsPresenter.swift */,
-				D948E9F926F4C1DC00074298 /* CartDetailsRouter.swift */,
-				D948E9FB26F4C1DC00074298 /* CartDetailsInteractor.swift */,
-				D948E9FC26F4C1DC00074298 /* CartDetailsConfigurator.swift */,
+				D9206FB026F6648700B017B9 /* OrderDetailsPresenter.swift */,
+				D9206FB126F6648700B017B9 /* OrderDetailsRouter.swift */,
+				D9206FB326F6648700B017B9 /* OrderDetailsInteractor.swift */,
+				D9206FB426F6648700B017B9 /* OrderDetailsConfigurator.swift */,
 			);
 			path = Pattern;
 			sourceTree = "<group>";
@@ -514,7 +598,7 @@
 		D948E9D526F4C16100074298 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D948E9FA26F4C1DC00074298 /* CartDetailsViewController.swift */,
+				D9206FB226F6648700B017B9 /* OrderDetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -546,6 +630,16 @@
 			path = Offers;
 			sourceTree = "<group>";
 		};
+		FF1ADD96241AC0CEA1E7D40E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FFAB365DA67F348708720F13 /* Pods-DakhilTask.debug.xcconfig */,
+				9890E2979DA3456DBF613D42 /* Pods-DakhilTask.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -553,9 +647,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D948E97526F4B99300074298 /* Build configuration list for PBXNativeTarget "DakhilTask" */;
 			buildPhases = (
+				4F97A6D4E100C6FB3F3836BD /* [CP] Check Pods Manifest.lock */,
 				D948E95D26F4B99200074298 /* Sources */,
 				D948E95E26F4B99200074298 /* Frameworks */,
 				D948E95F26F4B99200074298 /* Resources */,
+				DA990DB8FB3509D359EC6024 /* [CP] Embed Pods Frameworks */,
+				09B50608983EA2AABD19D280 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -607,6 +704,7 @@
 				D9F6C2B026F541BF000BE44C /* CategoryCell.xib in Resources */,
 				D948E99526F4BDF100074298 /* Home.storyboard in Resources */,
 				D948E97126F4B99300074298 /* LaunchScreen.storyboard in Resources */,
+				D9206FC026F6654400B017B9 /* CategoryTableCell.xib in Resources */,
 				D9F6C2B926F541F5000BE44C /* OfferCell.xib in Resources */,
 				D948E96E26F4B99300074298 /* Assets.xcassets in Resources */,
 				D948E96C26F4B99200074298 /* Main.storyboard in Resources */,
@@ -615,23 +713,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09B50608983EA2AABD19D280 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DakhilTask/Pods-DakhilTask-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DakhilTask/Pods-DakhilTask-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DakhilTask/Pods-DakhilTask-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F97A6D4E100C6FB3F3836BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DakhilTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA990DB8FB3509D359EC6024 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DakhilTask/Pods-DakhilTask-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DakhilTask/Pods-DakhilTask-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DakhilTask/Pods-DakhilTask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D948E95D26F4B99200074298 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9206F9E26F6448000B017B9 /* ProductPresenter.swift in Sources */,
 				D948E9C426F4C00000074298 /* ActivationConfigurator.swift in Sources */,
 				D948E9B626F4BFD600074298 /* SignUpInteractor.swift in Sources */,
+				D9206FA026F6448000B017B9 /* ProductViewController.swift in Sources */,
 				D948E9AA26F4BFB700074298 /* LoginViewController.swift in Sources */,
 				D9F6C28926F53347000BE44C /* UIView+Extentions.swift in Sources */,
 				D948E9DE26F4C18700074298 /* MainHomeInteractor.swift in Sources */,
-				D948E9FF26F4C1DC00074298 /* CartDetailsViewController.swift in Sources */,
 				D948E99F26F4BF7000074298 /* BaseTabBarController.swift in Sources */,
 				D9F6C29626F53429000BE44C /* URLRequest.swift in Sources */,
-				D948E9FD26F4C1DC00074298 /* CartDetailsPresenter.swift in Sources */,
 				D948E96926F4B99200074298 /* SplashViewController.swift in Sources */,
+				D9206FA226F6448000B017B9 /* ProductConfigurator.swift in Sources */,
 				D948E9DF26F4C18700074298 /* MainHomeConfigurator.swift in Sources */,
-				D948EA0126F4C1DC00074298 /* CartDetailsConfigurator.swift in Sources */,
 				D948E9EB26F4C1A800074298 /* CategoryConfigurator.swift in Sources */,
 				D948E9C126F4C00000074298 /* ActivationRouter.swift in Sources */,
 				D948E9EA26F4C1A800074298 /* CategoryInteractor.swift in Sources */,
@@ -640,6 +797,7 @@
 				D9F6C2AF26F541BF000BE44C /* CategoryCell.swift in Sources */,
 				D948E9C326F4C00000074298 /* ActivationInteractor.swift in Sources */,
 				D948E9DD26F4C18700074298 /* MainHomeViewController.swift in Sources */,
+				D9206FB526F6648700B017B9 /* OrderDetailsPresenter.swift in Sources */,
 				D948E9E726F4C1A800074298 /* CategoryPresenter.swift in Sources */,
 				D9F6C29326F5341D000BE44C /* UserRequest.swift in Sources */,
 				D948E9DB26F4C18700074298 /* MainHomePresenter.swift in Sources */,
@@ -647,21 +805,25 @@
 				D9F6C2B826F541F5000BE44C /* OfferCell.swift in Sources */,
 				D948E9A926F4BFB700074298 /* LoginRouter.swift in Sources */,
 				D9F6C29C26F5343F000BE44C /* RegisterModel.swift in Sources */,
+				D9206FB726F6648700B017B9 /* OrderDetailsViewController.swift in Sources */,
+				D9206FB926F6648700B017B9 /* OrderDetailsConfigurator.swift in Sources */,
+				D9206F9F26F6448000B017B9 /* ProductRouter.swift in Sources */,
 				D948E9AB26F4BFB700074298 /* LoginInteractor.swift in Sources */,
 				D948E9E926F4C1A800074298 /* CategoryViewController.swift in Sources */,
 				D94E150226F52B3500687BC3 /* MapViewController.swift in Sources */,
 				D9F6C29F26F53443000BE44C /* UserActivationModel.swift in Sources */,
 				D948E9B426F4BFD600074298 /* SignUpRouter.swift in Sources */,
-				D948EA0026F4C1DC00074298 /* CartDetailsInteractor.swift in Sources */,
 				D948E9B526F4BFD600074298 /* SignUpViewController.swift in Sources */,
-				D948E9FE26F4C1DC00074298 /* CartDetailsRouter.swift in Sources */,
+				D9206FA126F6448000B017B9 /* ProductInteractor.swift in Sources */,
 				D948E96526F4B99200074298 /* AppDelegate.swift in Sources */,
 				D948E9F326F4C1C600074298 /* CartRouter.swift in Sources */,
 				D948E9DC26F4C18700074298 /* MainHomeRouter.swift in Sources */,
 				D948E9AC26F4BFB700074298 /* LoginConfigurator.swift in Sources */,
+				D9206FBF26F6654400B017B9 /* CategoryTableCell.swift in Sources */,
 				D948E96726F4B99200074298 /* SceneDelegate.swift in Sources */,
 				D9F6C2A826F534E3000BE44C /* Validation.swift in Sources */,
 				D9F6C2A526F53457000BE44C /* HomeModel.swift in Sources */,
+				D9206FB826F6648700B017B9 /* OrderDetailsInteractor.swift in Sources */,
 				D9F6C28626F5331E000BE44C /* Extentions.swift in Sources */,
 				D948E9B326F4BFD600074298 /* SignUpPresenter.swift in Sources */,
 				D9F6C2A226F53447000BE44C /* ProviderDataModel.swift in Sources */,
@@ -669,6 +831,7 @@
 				D948E9F426F4C1C600074298 /* CartViewController.swift in Sources */,
 				D9F6C29926F5343B000BE44C /* LoginModel.swift in Sources */,
 				D948E9C026F4C00000074298 /* ActivationPresenter.swift in Sources */,
+				D9206FB626F6648700B017B9 /* OrderDetailsRouter.swift in Sources */,
 				D948E9E826F4C1A800074298 /* CategoryRouter.swift in Sources */,
 				D948E9A826F4BFB700074298 /* LoginPresenter.swift in Sources */,
 				D948E9F526F4C1C600074298 /* CartInteractor.swift in Sources */,
@@ -815,6 +978,7 @@
 		};
 		D948E97626F4B99300074298 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFAB365DA67F348708720F13 /* Pods-DakhilTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -835,6 +999,7 @@
 		};
 		D948E97726F4B99300074298 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9890E2979DA3456DBF613D42 /* Pods-DakhilTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

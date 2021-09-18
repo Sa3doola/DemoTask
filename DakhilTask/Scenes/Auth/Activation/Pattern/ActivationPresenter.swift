@@ -12,7 +12,7 @@ protocol ActivationView: AnyObject {
 }
 
 protocol ActivationPresenter {
-    func viewDidLoad()
+    func activate(code: String)
     func goToLogin()
 }
 
@@ -20,16 +20,16 @@ class ActivationPresenterImplementation: ActivationPresenter {
     fileprivate weak var view: ActivationView?
     internal let router: ActivationRouter
     internal let interactor : ActivationInteractor
-
+    fileprivate let phone: String
     
-    init(view: ActivationView,router: ActivationRouter,interactor:ActivationInteractor) {
+    init(view: ActivationView,router: ActivationRouter,interactor:ActivationInteractor, phone: String) {
         self.view = view
         self.router = router
         self.interactor = interactor
-       
+        self.phone = phone
     }
 
-    func viewDidLoad() {
+    func activate(code: String) {
         
     }
     

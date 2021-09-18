@@ -1,0 +1,6 @@
+framework module Pods_DakhilTask {
+  umbrella header "Pods-DakhilTask-umbrella.h"
+
+  export *
+  module * { export * }
+}

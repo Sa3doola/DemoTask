@@ -64,12 +64,28 @@ extension MainHomeViewController: UICollectionViewDataSource, UICollectionViewDe
         switch tag {
         case 0:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
+            presenter?.configure(cell: cell, forRow: indexPath.row)
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OfferCell", for: indexPath) as? OfferCell else { return UICollectionViewCell() }
+            presenter?.configure(cell: cell, forRow: indexPath.row)
             return cell
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let tag = collectionView.tag
+        
+        switch tag {
+        case 0:
+            presenter?.deSelectCategory(at: indexPath.row)
+        case 1:
+            presenter?.deSelectProduct(at: indexPath.row)
+        default:
+            print("non")
         }
     }
 

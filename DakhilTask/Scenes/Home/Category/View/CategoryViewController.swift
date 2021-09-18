@@ -20,7 +20,6 @@ final class CategoryViewController: UIViewController {
         configurator.configure(CategoryViewController: self)
         presenter?.viewDidLoad()
     }
-    
 }
 
 

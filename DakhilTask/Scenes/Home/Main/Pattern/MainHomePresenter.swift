@@ -12,16 +12,24 @@ protocol MainHomeView: AnyObject {
 }
 
 
-protocol MainHomeCellView {
+protocol ProductHomeCellView {
+    
+}
+
+protocol CategoryHomeCellView {
     
 }
 
 protocol MainHomePresenter {
     func viewDidLoad()
-    func configure(cell: MainHomeCellView, forRow row: Int)
+    func configure(cell: ProductHomeCellView, forRow row: Int)
+    func configure(cell: CategoryHomeCellView, forRow row: Int)
+    func deSelectProduct(at row: Int)
+    func deSelectCategory(at row: Int)
 }
 
 class MainHomePresenterImplementation: MainHomePresenter {
+    
     fileprivate weak var view: MainHomeView?
     internal let router: MainHomeRouter
     internal let interactor : MainHomeInteractor
@@ -39,8 +47,19 @@ class MainHomePresenterImplementation: MainHomePresenter {
         
     }
     
-    func configure(cell: MainHomeCellView, forRow row: Int) {
+    func configure(cell: CategoryHomeCellView, forRow row: Int) {
         
     }
     
+    func deSelectCategory(at row: Int) {
+        router.goToCategory()
+    }
+    
+    func configure(cell: ProductHomeCellView, forRow row: Int) {
+        
+    }
+    
+    func deSelectProduct(at row: Int) {
+        router.goToOffer()
+    }
 }

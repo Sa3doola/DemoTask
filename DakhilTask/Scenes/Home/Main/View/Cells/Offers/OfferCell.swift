@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OfferCell: UICollectionViewCell {
+class OfferCell: UICollectionViewCell, ProductHomeCellView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
