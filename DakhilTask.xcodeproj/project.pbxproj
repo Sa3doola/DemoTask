@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -416,6 +416,7 @@
 		D948E98C26F4BD4300074298 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				D98DE30F26F6827E00D17BFC /* MapVC */,
 				D948E9B926F4BFDA00074298 /* View */,
 				D948E9BA26F4BFE200074298 /* Pattern */,
 			);
@@ -454,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				D948E9B026F4BFD600074298 /* SignUpViewController.swift */,
-				D94E150126F52B3500687BC3 /* MapViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -603,6 +603,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D98DE30F26F6827E00D17BFC /* MapVC */ = {
+			isa = PBXGroup;
+			children = (
+				D94E150126F52B3500687BC3 /* MapViewController.swift */,
+			);
+			path = MapVC;
+			sourceTree = "<group>";
+		};
 		D9F6C2AA26F54185000BE44C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,7 +644,6 @@
 				FFAB365DA67F348708720F13 /* Pods-DakhilTask.debug.xcconfig */,
 				9890E2979DA3456DBF613D42 /* Pods-DakhilTask.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

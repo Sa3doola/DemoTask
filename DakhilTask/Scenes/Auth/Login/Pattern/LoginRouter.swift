@@ -10,12 +10,14 @@ import UIKit
 
 protocol LoginRouter {
     func goToSignUp()
+    func goToActivation(phone: String)
     func goToHome()
 }
 
 class LoginRouterImplementation: LoginRouter {
     
     fileprivate weak var LoginViewController: LoginViewController?
+    var phone: String!
     
     init(LoginViewController: LoginViewController) {
         self.LoginViewController = LoginViewController
@@ -26,6 +28,13 @@ class LoginRouterImplementation: LoginRouter {
     
     func goToSignUp() {
         let vc: SignUpViewController = authStoryboard.instantiateViewController()
+        self.LoginViewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToActivation(phone: String) {
+        self.phone = phone
+        let vc: ActivationViewController = authStoryboard.instantiateViewController()
+        vc.configurator = ActivationConfiguratorImplementation(phone: phone)
         self.LoginViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     

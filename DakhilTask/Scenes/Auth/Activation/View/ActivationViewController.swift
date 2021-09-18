@@ -38,6 +38,7 @@ final class ActivationViewController: UIViewController {
         let txt3 = OPTTxtField3.text!
         let txt4 = OPTTxtField4.text!
         let code = txt1 + txt2 + txt3 + txt4
+        presenter?.activate(code: code)
     }
     
     // MARK: - IBActions
@@ -47,7 +48,7 @@ final class ActivationViewController: UIViewController {
     }
     
     @IBAction func submitWasTapped(_ sender: UIButton) {
-        presenter?.goToLogin()
+        activate()
     }
 }
 

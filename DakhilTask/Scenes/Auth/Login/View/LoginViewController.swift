@@ -25,7 +25,6 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(LoginViewController: self)
-        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,16 +33,20 @@ final class LoginViewController: UIViewController {
     }
     
     // MARK: - Helper Functions
-    
+    private func logIn() {
+        let phone = phoneNumberTxtField.text!
+        let password = passwordTxtField.text!
+        presenter?.validate(phone: phone, password: password)
+    }
     
     // MARK: - IBActions
     
     @IBAction func forgetPasswordWasTapped(_ sender: UIButton) {
-        
+        print("Forget Password")
     }
     
     @IBAction func loginWasTapped(_ sender: UIButton) {
-        presenter?.goToHome()
+        logIn()
     }
     
     @IBAction func signupWasTapped(_ sender: UIButton) {
@@ -51,4 +54,26 @@ final class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: LoginView {}
+// MARK: - UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == phoneNumberTxtField {
+            passwordTxtField.becomeFirstResponder()
+        }
+        return true
+    }
+}
+
+// MARK: - LoginView
+
+extension LoginViewController: LoginView {
+    func showAlert(_ message: String) {
+        let alert = UIAlertController(title: "Please Try Again",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+}

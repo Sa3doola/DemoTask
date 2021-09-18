@@ -27,6 +27,8 @@ final class MainHomeViewController: UIViewController {
         configurator.configure(MainHomeViewController: self)
         presenter?.viewDidLoad()
         configureCollection()
+        let token = UserDefaults.standard.loadToken()
+        print("token: \(String(describing: token))")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -610,7 +610,7 @@
                                     <action selector="sumitLocationWasTapped:" destination="jbj-vM-uAU" eventType="touchUpInside" id="BIY-BN-v5X"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNb-lZ-cTB">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNb-lZ-cTB" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -627,6 +627,9 @@
                             <constraint firstItem="tj7-ig-AXT" firstAttribute="leading" secondItem="xvP-0T-kZA" secondAttribute="leading" id="tyC-zH-YNa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="pNb-lZ-cTB" id="dMc-dc-jXO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A6T-pc-LYz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

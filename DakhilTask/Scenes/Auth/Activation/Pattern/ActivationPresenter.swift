@@ -8,12 +8,11 @@
 import Foundation
 
 protocol ActivationView: AnyObject {
-
+    
 }
 
 protocol ActivationPresenter {
     func activate(code: String)
-    func goToLogin()
 }
 
 class ActivationPresenterImplementation: ActivationPresenter {
@@ -28,12 +27,17 @@ class ActivationPresenterImplementation: ActivationPresenter {
         self.interactor = interactor
         self.phone = phone
     }
-
-    func activate(code: String) {
-        
-    }
     
-    func goToLogin() {
-        router.goToLogin()
+    func activate(code: String) {
+        interactor.activation(phone: phone, code: code, deviceId: "123654123654",          deviceType: "ios", uuid: NSUUID().uuidString) { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let model):
+                print(model)
+                self.router.goToLogin()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
