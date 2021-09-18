@@ -5,8 +5,8 @@
 //  Created by Saad Sherif on 9/17/21.
 //
 
-import Foundation
+import Alamofire
 
- class MainHomeInteractor {
+class MainHomeInteractor {
     
- }
+}

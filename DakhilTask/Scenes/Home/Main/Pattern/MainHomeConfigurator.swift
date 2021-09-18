@@ -14,7 +14,7 @@ protocol MainHomeConfigurator {
 
 
 class MainHomeConfiguratorImplementation {
-
+    
     func configure(MainHomeViewController:MainHomeViewController) {
         let view = MainHomeViewController
         let router = MainHomeRouterImplementation(MainHomeViewController: view)
