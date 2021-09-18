@@ -9,7 +9,8 @@ import UIKit
 
 final class CategoryViewController: UIViewController {
     
-    var configurator = CategoryConfiguratorImplementation()
+    var configurator: CategoryConfiguratorImplementation!
+    
     
     var presenter: CategoryPresenter?
     
@@ -21,7 +22,5 @@ final class CategoryViewController: UIViewController {
         presenter?.viewDidLoad()
     }
 }
-
-
 
 extension CategoryViewController: CategoryView {}

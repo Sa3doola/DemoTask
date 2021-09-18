@@ -133,7 +133,7 @@ extension ValidationErrors: LocalizedError {
         case .confrimPassword:
             return "Password Not match Confrim Password".localizedCapitalized
         case .failedToLogin:
-            return "Failed To Login".localizedCapitalized
+            return "خطأ فى بيانات الدخول".localizedCapitalized
         case .needActive:
             return "Need To Active".localizedCapitalized
         }

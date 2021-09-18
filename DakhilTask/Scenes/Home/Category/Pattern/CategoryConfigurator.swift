@@ -14,13 +14,19 @@ protocol CategoryConfigurator {
 
 
 class CategoryConfiguratorImplementation {
+    
+    let model: HomeCategory
+    
+    init(model: HomeCategory) {
+        self.model = model
+    }
 
     func configure(CategoryViewController:CategoryViewController) {
         let view = CategoryViewController
         let router = CategoryRouterImplementation(CategoryViewController: view)
         
         let interactor = CategoryInteractor()
-        let presenter = CategoryPresenterImplementation(view: view, router: router,interactor:interactor)
+        let presenter = CategoryPresenterImplementation(view: view, router: router,interactor:interactor, model: model)
         
         
         CategoryViewController.presenter = presenter

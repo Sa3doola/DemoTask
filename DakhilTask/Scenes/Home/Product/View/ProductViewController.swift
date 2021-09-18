@@ -9,7 +9,7 @@ import UIKit
 
 final class ProductViewController: UIViewController {
     
-    var configurator = ProductConfiguratorImplementation()
+    var configurator: ProductConfiguratorImplementation!
     
     var presenter: ProductPresenter?
     

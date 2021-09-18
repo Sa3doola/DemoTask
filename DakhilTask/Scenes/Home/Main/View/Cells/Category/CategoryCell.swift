@@ -6,12 +6,21 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CategoryCell: UICollectionViewCell, CategoryHomeCellView {
-
+    
+    
+    @IBOutlet weak var categoryImage: UIImageView!
+    @IBOutlet weak var categoryName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    func cellConfigure(model: HomeCategory) {
+        self.categoryName.text = model.name
+        self.categoryImage.sd_setImage(with: model.image, completed: nil)
+    }
 }

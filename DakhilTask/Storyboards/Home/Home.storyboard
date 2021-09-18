@@ -78,25 +78,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dje-qG-R4W" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="840"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9X-37-pEl">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9X-37-pEl" customClass="ImageSlideshow" customModule="ImageSlideshow">
                                                 <rect key="frame" x="20" y="15" width="335" height="160"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Offer" translatesAutoresizingMaskIntoConstraints="NO" id="1if-em-xJ7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="160"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="15"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </imageView>
-                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="1if-em-xJ7" secondAttribute="trailing" id="69W-p0-IfQ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="1if-em-xJ7" secondAttribute="bottom" id="CP4-W8-4pO"/>
-                                                    <constraint firstItem="1if-em-xJ7" firstAttribute="leading" secondItem="k9X-37-pEl" secondAttribute="leading" id="D3i-t5-oBh"/>
                                                     <constraint firstAttribute="height" constant="160" id="UOk-2I-CeK"/>
-                                                    <constraint firstItem="1if-em-xJ7" firstAttribute="top" secondItem="k9X-37-pEl" secondAttribute="top" id="qEw-jR-cIe"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -143,7 +129,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvP-H2-67B">
                                                 <rect key="frame" x="20" y="385" width="335" height="160"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Offer" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-in-v5g">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-in-v5g">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="160"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -151,11 +137,32 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1Wr-Qf-ESg">
+                                                        <rect key="frame" x="0.0" y="35" width="335" height="95"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Random Name " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYZ-Qw-A4x">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="40.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fresh Fruits and Vegetables, Fresh Fruits and Vegetables, Fresh Fruits and Vegetables" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3D-Ik-vCC">
+                                                                <rect key="frame" x="0.0" y="48.5" width="335" height="46.5"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="160" id="3dR-lk-Gkq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1Wr-Qf-ESg" secondAttribute="trailing" id="5BT-du-5MS"/>
+                                                    <constraint firstItem="1Wr-Qf-ESg" firstAttribute="top" secondItem="rvP-H2-67B" secondAttribute="top" constant="35" id="8B5-Tw-E66"/>
+                                                    <constraint firstItem="1Wr-Qf-ESg" firstAttribute="leading" secondItem="rvP-H2-67B" secondAttribute="leading" id="94H-kT-fWU"/>
                                                     <constraint firstItem="bBI-in-v5g" firstAttribute="top" secondItem="rvP-H2-67B" secondAttribute="top" id="HTR-Pb-I3P"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1Wr-Qf-ESg" secondAttribute="bottom" constant="30" id="LP0-Hx-ZAG"/>
                                                     <constraint firstAttribute="bottom" secondItem="bBI-in-v5g" secondAttribute="bottom" id="io3-9U-U4b"/>
                                                     <constraint firstItem="bBI-in-v5g" firstAttribute="leading" secondItem="rvP-H2-67B" secondAttribute="leading" id="nIt-OY-2qB"/>
                                                     <constraint firstAttribute="trailing" secondItem="bBI-in-v5g" secondAttribute="trailing" id="xPw-J1-Ssh"/>
@@ -250,7 +257,11 @@
                     </view>
                     <connections>
                         <outlet property="categoryCollectionView" destination="7ZJ-Uo-W9v" id="xo0-nr-rUg"/>
+                        <outlet property="imageSlide" destination="k9X-37-pEl" id="YHg-F1-FHd"/>
                         <outlet property="offerCollectionView" destination="pAI-eX-x6I" id="jSu-BF-53O"/>
+                        <outlet property="randomCategoryImage" destination="bBI-in-v5g" id="R8K-2f-Odc"/>
+                        <outlet property="randomDiscriptionLabel" destination="X3D-Ik-vCC" id="dJW-OJ-gve"/>
+                        <outlet property="randomNameLabel" destination="EYZ-Qw-A4x" id="G0y-As-cNk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="alS-gC-cjd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -630,15 +641,11 @@
         <image name="FavBlue" width="48" height="48"/>
         <image name="Filter" width="32" height="32"/>
         <image name="Notification" width="30.5" height="30.5"/>
-        <image name="Offer" width="225" height="225"/>
         <image name="Search" width="21" height="21"/>
         <image name="SideMenu" width="32" height="32"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

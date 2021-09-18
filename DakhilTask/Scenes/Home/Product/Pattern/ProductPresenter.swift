@@ -11,14 +11,8 @@ protocol ProductView: AnyObject {
 
 }
 
-
-protocol ProductCellView {
-    
-}
-
 protocol ProductPresenter {
     func viewDidLoad()
-    func configure(cell: ProductCellView, forRow row: Int)
 }
 
 class ProductPresenterImplementation: ProductPresenter {
@@ -26,21 +20,12 @@ class ProductPresenterImplementation: ProductPresenter {
     internal let router: ProductRouter
     internal let interactor : ProductInteractor
 
+    fileprivate var model: ServiceWithOffer?
     
-    init(view: ProductView,router: ProductRouter,interactor:ProductInteractor) {
+    init(view: ProductView,router: ProductRouter,interactor:ProductInteractor, model: ServiceWithOffer) {
         self.view = view
         self.router = router
         self.interactor = interactor
-       
+        self.model = model
     }
-
-    
-    func viewDidLoad() {
-        
-    }
-    
-    func configure(cell: ProductCellView, forRow row: Int) {
-       
-    }
-
 }

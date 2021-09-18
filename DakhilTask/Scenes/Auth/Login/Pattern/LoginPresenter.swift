@@ -50,7 +50,7 @@ class LoginPresenterImplementation: LoginPresenter {
                 print(model)
                 do {
                     let resultModel = try ValidateService.validate(model: model)
-                    print(resultModel)
+                    
                     let token = resultModel.data?.userBaseInfo?.token
                     UserDefaults.standard.saveToken(token: token)
                     self.router.goToHome()

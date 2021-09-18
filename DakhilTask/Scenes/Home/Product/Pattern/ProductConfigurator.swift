@@ -14,14 +14,20 @@ protocol ProductConfigurator {
 
 
 class ProductConfiguratorImplementation {
+    
+    let model: ServiceWithOffer
+    
+    init(model: ServiceWithOffer) {
+        self.model = model
+    }
 
     func configure(ProductViewController:ProductViewController) {
         let view = ProductViewController
         let router = ProductRouterImplementation(ProductViewController: view)
         
         let interactor = ProductInteractor()
-        let presenter = ProductPresenterImplementation(view: view, router: router,interactor:interactor)
-        
+        let presenter = ProductPresenterImplementation(view: view, router: router,interactor:interactor,
+                                                       model: model)
         
         ProductViewController.presenter = presenter
     }

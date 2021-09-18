@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+import ImageSlideshow
 
 final class MainHomeViewController: UIViewController {
     
@@ -17,18 +19,23 @@ final class MainHomeViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var imageSlide: ImageSlideshow!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var offerCollectionView: UICollectionView!
+    @IBOutlet weak var randomCategoryImage: UIImageView!
+    @IBOutlet weak var randomNameLabel: UILabel!
+    @IBOutlet weak var randomDiscriptionLabel: UILabel!
     
     // MARK: - UIViewController Events
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(MainHomeViewController: self)
-        presenter?.viewDidLoad()
+        DispatchQueue.main.async {
+            self.presenter?.viewDidLoad()
+        }
         configureCollection()
-        let token = UserDefaults.standard.loadToken()
-        print("token: \(String(describing: token))")
+        configureSlideImage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,19 +52,39 @@ final class MainHomeViewController: UIViewController {
                                      forCellWithReuseIdentifier: "OfferCell")
     }
     
+    private func configureSlideImage() {
+        imageSlide.contentScaleMode = .scaleAspectFill
+        let pageIndicator = UIPageControl()
+        pageIndicator.currentPageIndicatorTintColor = #colorLiteral(red: 0.9529411765, green: 0.5725490196, blue: 0.1450980392, alpha: 1)
+        pageIndicator.pageIndicatorTintColor = .white
+        imageSlide.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
+        imageSlide.pageIndicator = pageIndicator
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImageSlider))
+        imageSlide.addGestureRecognizer(gestureRecognizer)
+    }
+    
     // MARK: - IBActions
+    
+    @objc private func didTapImageSlider() {
+        imageSlide.presentFullScreenController(from: self)
+    }
 }
 
 // MARK: - UICollectionViewDelegate and DataSource
 
 extension MainHomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        let tag = collectionView.tag
+        switch tag {
+        case 0:
+            return presenter?.numberOfCategories() ?? 0
+        case 1:
+            return presenter?.numberOfProducts() ?? 0
+        default:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,8 +117,29 @@ extension MainHomeViewController: UICollectionViewDataSource, UICollectionViewDe
             print("non")
         }
     }
-
 }
 
 
-extension MainHomeViewController: MainHomeView {}
+extension MainHomeViewController: MainHomeView {
+    func reloadCollectionData() {
+        self.categoryCollectionView.reloadData()
+        self.offerCollectionView.reloadData()
+    }
+    
+    func reloadRandomCategory(model: HomeCategory) {
+        self.randomCategoryImage.sd_setImage(with: model.image, completed: nil)
+        self.randomNameLabel.text = model.name
+        self.randomDiscriptionLabel.text = model.categoryDescription
+    }
+    
+    func reloadImageSlides(slide: [Slide]) {
+        let first = slide[0].image
+        let secound = slide[1].image
+        let third = slide[2].image
+        imageSlide.setImageInputs([
+            SDWebImageSource(url: first!),
+            SDWebImageSource(url: secound!),
+            SDWebImageSource(url: third!)
+        ])
+    }
+}
