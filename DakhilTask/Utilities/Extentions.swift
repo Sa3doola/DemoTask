@@ -46,8 +46,8 @@ extension UserDefaults {
     // MARK: - Load
     
     func loadToken() -> String? {
-        let token = UserDefaults.standard.value(forKey: "userToken") as! String
-        return token
+        let token = UserDefaults.standard.value(forKey: "userToken")
+        return token as? String 
     }
-    
 }
+

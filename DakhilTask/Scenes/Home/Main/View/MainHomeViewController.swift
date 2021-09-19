@@ -19,6 +19,7 @@ final class MainHomeViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var searchTxtField: UITextField!
     @IBOutlet weak var imageSlide: ImageSlideshow!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var offerCollectionView: UICollectionView!
@@ -69,6 +70,23 @@ final class MainHomeViewController: UIViewController {
     @objc private func didTapImageSlider() {
         imageSlide.presentFullScreenController(from: self)
     }
+    
+    @IBAction func sideMenuWasTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func favBtnWasTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func cartBtnWasTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func showAllWasTapped(_ sender: UIButton) {
+        
+    }
+    
 }
 
 // MARK: - UICollectionViewDelegate and DataSource
@@ -119,6 +137,7 @@ extension MainHomeViewController: UICollectionViewDataSource, UICollectionViewDe
     }
 }
 
+// MARK: - MainHomeView
 
 extension MainHomeViewController: MainHomeView {
     func reloadCollectionData() {

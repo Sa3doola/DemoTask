@@ -10,7 +10,7 @@
         <!--Base Tab Bar Controller-->
         <scene sceneID="i6P-b5-5JT">
             <objects>
-                <tabBarController storyboardIdentifier="BaseTabBarController" id="PYb-Jm-lKs" customClass="BaseTabBarController" customModule="DakhilTask" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="BaseTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PYb-Jm-lKs" customClass="BaseTabBarController" customModule="DakhilTask" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Hx-uF-ZiM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

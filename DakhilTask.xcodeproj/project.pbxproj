@@ -170,13 +170,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D9206F8B26F636FF00B017B9 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		D9206F9626F6444900B017B9 /* Product */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				D948E97F26F4BC8D00074298 /* Resources */,
-				D9206F8B26F636FF00B017B9 /* Manager */,
 				D948E97E26F4BC8600074298 /* Utilities */,
 				D948E97D26F4BC5900074298 /* Network */,
 				D948E97C26F4BC4B00074298 /* Model */,

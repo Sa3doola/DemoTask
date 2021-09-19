@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol ProductRouter {
-  
+  func backToHome()
 }
 
 class ProductRouterImplementation: ProductRouter {
@@ -19,5 +19,7 @@ class ProductRouterImplementation: ProductRouter {
         self.ProductViewController = ProductViewController
     }
     
-    
+    func backToHome() {
+        self.ProductViewController?.navigationController?.popViewController(animated: true)
+    }
 }
