@@ -45,8 +45,10 @@ class QuestionsPresenterImplementation: QuestionsPresenter {
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                self.models = model.data?.fqs
-                self.view?.reloadData()
+                DispatchQueue.main.async {
+                    self.models = model.data?.fqs
+                    self.view?.reloadData()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }

@@ -13,52 +13,99 @@ class QuestionTableCell: UITableViewCell, QuestionsCellView {
     
     static let id = String(describing: QuestionTableCell.self)
     
-    var data: Fq? {
-        didSet {
-            guard let data = data else { return }
-            self.questionlabel.text = data.question
-            self.answerLabel.text = data.answer
-        }
-    }
-    
-    private let questionlabel: UILabel = {
+    private let questionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 17, weight: .semibold)
+        label.textAlignment = .left
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.textAlignment = .center
         return label
+    }()
+    
+    private let containerView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        return stack
+    }()
+    
+    private let questionView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .orange
+        return view
     }()
     
     private let answerLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .medium)
-        label.textColor = #colorLiteral(red: 0.4, green: 0.4039215686, blue: 0.4039215686, alpha: 1)
-        label.textAlignment = .center
-        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         return label
     }()
     
-    // MARK: - LifeCycle
+    private let answerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        contentView.addSubview(questionlabel)
-        contentView.addSubview(answerLabel)
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    var data: Fq? {
+        didSet {
+            guard let data = data else { return }
+            self.questionLabel.text = data.question
+            self.answerLabel.text = data.answer
+        }
     }
     
-    // MARK: - Helper Functions
+    private func configureUI() {
+        selectionStyle = .none
+        contentView.addSubview(questionLabel)
+        contentView.addSubview(answerLabel)
+        
+        questionLabel.anchor(top: contentView.topAnchor,
+                            leading: contentView.leadingAnchor,
+                            bottom: answerLabel.topAnchor,
+                            trailing: contentView.trailingAnchor,
+                            padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+        
+        answerLabel.anchor(top: self.questionLabel.bottomAnchor,
+                           leading: contentView.leadingAnchor,
+                           bottom: contentView.bottomAnchor,
+                           trailing: contentView.trailingAnchor,
+                           padding: .init(top: 10, left: 10, bottom: 10, right: 10),
+                           size: .init(width: self.contentView.width,
+                                       height: 30))
+    }
     
     func congiureCell(model: Fq) {
         self.data = model
     }
-
+    
+    var isAnswerLabelIsHidden: Bool {
+        return answerLabel.isHidden
+    }
+    
+    func showAnswerLabel() {
+        answerLabel.isHidden = false
+    }
+    
+    func hideAnswerLabel() {
+        answerLabel.isHidden = true
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        if isAnswerLabelIsHidden, selected {
+            showAnswerLabel()
+        } else {
+            hideAnswerLabel()
+        }
+    }
 }

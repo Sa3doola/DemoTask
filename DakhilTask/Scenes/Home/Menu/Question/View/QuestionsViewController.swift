@@ -63,9 +63,22 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: QuestionTableCell.id, for: indexPath) as? QuestionTableCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: QuestionTableCell.id, for: indexPath) as? QuestionTableCell else { return UITableViewCell() }
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            self.questionTableView.performBatchUpdates(nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = self.questionTableView.cellForRow(at: indexPath) as? QuestionTableCell {
+            cell.hideAnswerLabel()
+        }
     }
 }
 

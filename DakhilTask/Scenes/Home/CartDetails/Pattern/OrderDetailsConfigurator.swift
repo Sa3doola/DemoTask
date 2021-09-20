@@ -26,7 +26,10 @@ class OrderDetailsConfiguratorImplementation {
         let router = OrderDetailsRouterImplementation(OrderDetailsViewController: view)
         
         let interactor = OrderDetailsInteractor()
-        let presenter = OrderDetailsPresenterImplementation(view: view, router: router,interactor:interactor, model: model)
+        let presenter = OrderDetailsPresenterImplementation(view: view,
+                                                            router: router,
+                                                            interactor:interactor,
+                                                            model: model)
         
         OrderDetailsViewController.presenter = presenter
     }

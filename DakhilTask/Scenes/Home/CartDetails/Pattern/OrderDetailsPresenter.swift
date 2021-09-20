@@ -12,22 +12,20 @@ protocol OrderDetailsView: AnyObject {
 }
 
 protocol OrderDetailsCellView {
-    func configreCell(_ model: Service)
+    func configreCell(_ model: Service, delegate: UpdateAmountDelegate)
 }
 
 protocol OrderDetailsPresenter {
     func viewDidLoad()
     func numberOfRows() -> Int
     func configure(cell: OrderDetailsCellView, forRow row: Int)
-    
 }
 
-class OrderDetailsPresenterImplementation: OrderDetailsPresenter, DidUpdateOrderAmount {
+class OrderDetailsPresenterImplementation: OrderDetailsPresenter, UpdateAmountDelegate {
     
     fileprivate weak var view: OrderDetailsView?
     internal let router: OrderDetailsRouter
     internal let interactor : OrderDetailsInteractor
-    
     fileprivate var model: CartData?
     
     private var models: [Service]?
@@ -49,24 +47,28 @@ class OrderDetailsPresenterImplementation: OrderDetailsPresenter, DidUpdateOrder
     
     func configure(cell: OrderDetailsCellView, forRow row: Int) {
         guard let data = models?[row] else { return }
-        cell.configreCell(data)
+        cell.configreCell(data, delegate: self)
     }
     
-    func updateOrderAmountCell(amount: Int, orderId: Int) {
-        print("Delegate Is Done")
-        updateOrderAmount(orderServiceId: orderId, amount: amount)
+    func updateAmount(amount: Int, id: Int) {
+        print("DoneDelegate")
+        updateOrderAmount(orderServiceId: id, amount: amount)
     }
     
     func updateOrderAmount(orderServiceId: Int, amount: Int) {
         interactor.updateOrderAmount(orderServiceId: orderServiceId, amount: amount) { (result) in
             switch result {
             case .success(let model):
-                print(model)
+                guard let newPrice = model.data?.orderPrice else { return }
+                DispatchQueue.main.async {
+                    self.view?.reloadData(price: newPrice)
+                }
             case.failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    
     
     func fetchOrderData() {
         guard let orderId = model?.id else { return }

@@ -8,18 +8,17 @@
 import UIKit
 import SDWebImage
 
-protocol DidUpdateOrderAmount {
-    func updateOrderAmountCell(amount: Int, orderId: Int)
+protocol UpdateAmountDelegate: class {
+    func updateAmount(amount: Int, id: Int)
 }
 
 class OrderDetailsCell: UITableViewCell, OrderDetailsCellView {
-    
     
     // MARK: - Properties
     
     private var model: Service?
     
-    var delegate: DidUpdateOrderAmount?
+    weak var delegate: UpdateAmountDelegate?
     
     var amount: Int = 0 {
         didSet {
@@ -36,8 +35,9 @@ class OrderDetailsCell: UITableViewCell, OrderDetailsCellView {
     
     // MARK: - OrderDetailsCellView
     
-    func configreCell(_ model: Service) {
+    func configreCell(_ model: Service, delegate: UpdateAmountDelegate) {
         self.model = model
+        self.delegate = delegate
         configure(model: model)
     }
     
@@ -53,7 +53,8 @@ class OrderDetailsCell: UITableViewCell, OrderDetailsCellView {
     
     func updateOrderAmount() {
         guard let id = self.model?.id else { return }
-        self.delegate?.updateOrderAmountCell(amount: self.amount, orderId: id)
+        self.delegate?.updateAmount(amount: self.amount,
+                                    id: id)
     }
     
     // MARK: - IBActions
