@@ -14,7 +14,7 @@ protocol MainHomeView: AnyObject {
 }
 
 protocol ProductHomeCellView {
-    func cellConfigure(model: ServiceWithOffer)
+    func cellConfigure(model: ProductModel)
 }
 
 protocol CategoryHomeCellView {
@@ -27,8 +27,10 @@ protocol MainHomePresenter {
     func numberOfProducts() -> Int
     func configure(cell: ProductHomeCellView, forRow row: Int)
     func configure(cell: CategoryHomeCellView, forRow row: Int)
+    func goToCart()
     func deSelectProduct(at row: Int)
     func deSelectCategory(at row: Int)
+    func goToMenu()
 }
 
 class MainHomePresenterImplementation: MainHomePresenter {
@@ -40,7 +42,7 @@ class MainHomePresenterImplementation: MainHomePresenter {
     private var slides: [Slide]?
     private var categories: [HomeCategory]?
     private var randomCategory: HomeCategory?
-    private var serviceWithOffer: [ServiceWithOffer]?
+    private var serviceWithOffer: [ProductModel]?
     
     
     init(view: MainHomeView,router: MainHomeRouter,interactor:MainHomeInteractor) {
@@ -84,7 +86,7 @@ class MainHomePresenterImplementation: MainHomePresenter {
     }
     
     func deSelectCategory(at row: Int) {
-        guard let data = categories?[row] else { return }
+        guard let data = serviceWithOffer?[row] else { return }
         router.goToCategory(data)
     }
     
@@ -100,5 +102,13 @@ class MainHomePresenterImplementation: MainHomePresenter {
     func deSelectProduct(at row: Int) {
         guard let product = serviceWithOffer?[row] else { return }
         router.goToOffer(product)
+    }
+    
+    func goToCart() {
+        router.goToCart()
+    }
+    
+    func goToMenu() {
+        router.goToMenu()
     }
 }

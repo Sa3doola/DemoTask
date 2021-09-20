@@ -43,11 +43,30 @@ extension UserDefaults {
         UserDefaults.standard.set(token, forKey: "userToken")
     }
     
+    func saveUUID(uuid: String) {
+        UserDefaults.standard.set(uuid, forKey: "uuid")
+    }
+    
+    func saveAddress(address: String) {
+        UserDefaults.standard.set(address, forKey: "address")
+    }
+    
     // MARK: - Load
     
     func loadToken() -> String? {
         let token = UserDefaults.standard.value(forKey: "userToken")
         return token as? String 
     }
+    
+    func loadUUID() -> String? {
+        let uuid = UserDefaults.standard.value(forKey: "uuid")
+        return uuid as? String
+    }
+    
+    func loadAddress() -> String? {
+        let address = UserDefaults.standard.value(forKey: "address")
+        return address as? String
+    }
+    
 }
 

@@ -18,6 +18,4 @@ class OrderDetailsRouterImplementation: OrderDetailsRouter {
     init(OrderDetailsViewController: OrderDetailsViewController) {
         self.OrderDetailsViewController = OrderDetailsViewController
     }
-    
-    
 }

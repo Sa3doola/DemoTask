@@ -14,14 +14,19 @@ protocol OrderDetailsConfigurator {
 
 
 class OrderDetailsConfiguratorImplementation {
+    
+    let model: CartData
+    
+    init(model: CartData) {
+        self.model = model
+    }
 
     func configure(OrderDetailsViewController:OrderDetailsViewController) {
         let view = OrderDetailsViewController
         let router = OrderDetailsRouterImplementation(OrderDetailsViewController: view)
         
         let interactor = OrderDetailsInteractor()
-        let presenter = OrderDetailsPresenterImplementation(view: view, router: router,interactor:interactor)
-        
+        let presenter = OrderDetailsPresenterImplementation(view: view, router: router,interactor:interactor, model: model)
         
         OrderDetailsViewController.presenter = presenter
     }

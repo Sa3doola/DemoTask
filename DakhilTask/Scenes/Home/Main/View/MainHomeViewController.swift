@@ -72,7 +72,7 @@ final class MainHomeViewController: UIViewController {
     }
     
     @IBAction func sideMenuWasTapped(_ sender: UIButton) {
-        
+        presenter?.goToMenu()
     }
     
     @IBAction func favBtnWasTapped(_ sender: UIButton) {
@@ -80,7 +80,7 @@ final class MainHomeViewController: UIViewController {
     }
     
     @IBAction func cartBtnWasTapped(_ sender: UIButton) {
-        
+        presenter?.goToCart()
     }
     
     @IBAction func showAllWasTapped(_ sender: UIButton) {

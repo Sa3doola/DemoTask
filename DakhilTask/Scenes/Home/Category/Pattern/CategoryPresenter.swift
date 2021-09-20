@@ -13,12 +13,14 @@ protocol CategoryView: AnyObject {
 
 
 protocol CategoryCellView {
-    
+    func configure(model: ProductModel)
 }
 
 protocol CategoryPresenter {
     func viewDidLoad()
+    func backToHome()
     func configure(cell: CategoryCellView, forRow row: Int)
+    func goToCart()
 }
 
 class CategoryPresenterImplementation: CategoryPresenter {
@@ -26,9 +28,9 @@ class CategoryPresenterImplementation: CategoryPresenter {
     internal let router: CategoryRouter
     internal let interactor : CategoryInteractor
 
-    fileprivate var model: HomeCategory?
+    fileprivate var model: ProductModel?
     
-    init(view: CategoryView,router: CategoryRouter,interactor:CategoryInteractor, model: HomeCategory) {
+    init(view: CategoryView,router: CategoryRouter,interactor:CategoryInteractor, model: ProductModel) {
         self.view = view
         self.router = router
         self.interactor = interactor
@@ -40,8 +42,16 @@ class CategoryPresenterImplementation: CategoryPresenter {
         
     }
     
+    func backToHome() {
+        router.backToHome()
+    }
+    
+    func goToCart() {
+        router.goToCart()
+    }
+    
     func configure(cell: CategoryCellView, forRow row: Int) {
-       
+        cell.configure(model: model!)
     }
 
 }

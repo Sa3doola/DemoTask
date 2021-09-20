@@ -52,6 +52,7 @@ final class SignUpViewController: UIViewController {
         let lng = self.lng
         let password = passwordTxtField.text!
         let confirmPass = confirmPasswordTxtField.text!
+        UserDefaults.standard.saveAddress(address: address)
         presenter?.validate(name: name, phone: phone, cityId: cityID, address: address, lat: lat, lng: lng,
                             password: password, confPass: confirmPass)
     }

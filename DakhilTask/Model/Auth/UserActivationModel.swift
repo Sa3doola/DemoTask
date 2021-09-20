@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - UserActivationModel
 struct UserActivationModel: Codable {
     let key: String?
     let data: DataActivation?
@@ -14,8 +15,7 @@ struct UserActivationModel: Codable {
     let code: Int?
 }
 
-// MARK: - DataClass
-
+// MARK: - DataActivation
 struct DataActivation: Codable {
     let userBaseInfo: UserBaseInfo?
 
@@ -25,7 +25,6 @@ struct DataActivation: Codable {
 }
 
 // MARK: - UserBaseInfo
-
 struct UserBaseInfo: Codable {
     let id: Int?
     let uuid: String?
@@ -50,7 +49,6 @@ struct UserBaseInfo: Codable {
 }
 
 // MARK: - AddressType
-
 struct AddressType: Codable {
     let id: Int?
     let name, status: String?

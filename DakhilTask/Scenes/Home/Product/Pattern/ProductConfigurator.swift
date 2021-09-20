@@ -15,9 +15,9 @@ protocol ProductConfigurator {
 
 class ProductConfiguratorImplementation {
     
-    let model: ServiceWithOffer
+    let model: ProductModel
     
-    init(model: ServiceWithOffer) {
+    init(model: ProductModel) {
         self.model = model
     }
 
@@ -26,8 +26,7 @@ class ProductConfiguratorImplementation {
         let router = ProductRouterImplementation(ProductViewController: view)
         
         let interactor = ProductInteractor()
-        let presenter = ProductPresenterImplementation(view: view, router: router,interactor:interactor,
-                                                       model: model)
+        let presenter = ProductPresenterImplementation(view: view, router: router,interactor:interactor, model: model)
         
         ProductViewController.presenter = presenter
     }

@@ -41,9 +41,12 @@ class LoginPresenterImplementation: LoginPresenter {
     }
     
     func loginRequest(phone: String, password: String) {
+        UserDefaults.standard.saveUUID(uuid: NSUUID().uuidString)
+        guard let uuid = UserDefaults.standard.loadUUID() else  { return }
+        print("LoginUUID: \(uuid)")
         interactor.login(phone: phone, password: password, userType: "client",
                          deviceId: "123654123654", deviceType: "ios",
-                         uuid: NSUUID().uuidString) { [weak self] (result) in
+                         uuid: uuid) { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let model):

@@ -14,7 +14,7 @@ struct ProviderDataModel: Codable {
     let code: Int?
 }
 
-// MARK: - DataClass
+// MARK: - DataProvider
 struct DataProvider: Codable {
     let cities: [City]?
     let categories: [Category]?

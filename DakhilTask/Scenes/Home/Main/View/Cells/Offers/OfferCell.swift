@@ -24,7 +24,7 @@ class OfferCell: UICollectionViewCell, ProductHomeCellView {
         // Initialization code
     }
     
-    func cellConfigure(model: ServiceWithOffer) {
+    func cellConfigure(model: ProductModel) {
         self.productImage.sd_setImage(with: model.image, completed: nil)
         guard let discount = model.discountPercentage else { return }
         self.precentDicountLabel.text = "\(discount)%"

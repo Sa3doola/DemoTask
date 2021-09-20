@@ -9,7 +9,8 @@ import UIKit
 
 
 protocol CategoryRouter {
-  
+    func backToHome()
+    func goToCart()
 }
 
 class CategoryRouterImplementation: CategoryRouter {
@@ -19,5 +20,14 @@ class CategoryRouterImplementation: CategoryRouter {
         self.CategoryViewController = CategoryViewController
     }
     
+    let homeStoryboard = Storyboard.homeSrotyboard
     
+    func goToCart() {
+        let vc: CartViewController = homeStoryboard.instantiateViewController()
+        self.CategoryViewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func backToHome() {
+        self.CategoryViewController?.navigationController?.popViewController(animated: true)
+    }
 }

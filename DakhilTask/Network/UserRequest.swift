@@ -19,7 +19,18 @@ enum APIRouter: URLRequestBuilder {
     // MARK: - Home
     
     case homePage
-
+    
+    // MARK: - Cart
+    
+    case addToCart(uuid: String, lat: Double, lng: Double, address: String, providerID: Int, serviceId: Int, amount: Int)
+    case cartDetails(uuid: String)
+    case orderDetails(orderID: Int)
+    case updateOrderAmount(orderServiceId: Int, amount: Int)
+    
+    // MARK: - Setting
+    
+    case setting(type: String)
+    
     internal var path: String {
         switch self {
         case .login:
@@ -32,9 +43,19 @@ enum APIRouter: URLRequestBuilder {
             return "user_activation"
         case .homePage:
             return "clientHomePage"
+        case .addToCart:
+            return "addToCart"
+        case .cartDetails:
+            return "cartDetails"
+        case .orderDetails:
+            return "orderDetails"
+        case .updateOrderAmount:
+            return "updateAmount"
+        case .setting:
+            return "sidePages"
         }
     }
-
+    
     internal var parameters: Parameters? {
         var params = Parameters.init()
         switch self {
@@ -55,7 +76,7 @@ enum APIRouter: URLRequestBuilder {
             params["password"] = password
             params["password_confirmation"] = passwordConfirm
             params["address_type_id"] = addressTypeID
-
+            
         case .getCities:
             return nil
         case .activation(let phone, let code, let deviceId, let deviceType, let uuid):
@@ -66,15 +87,42 @@ enum APIRouter: URLRequestBuilder {
             params["uuid"] = uuid
         case .homePage:
             return nil
+        case .addToCart(let uuid, let lat, let lng, let address,
+                        let providerID, let serviceId, let amount):
+            params["uuid"] = uuid
+            params["lat"] = lat
+            params["lng"] = lng
+            params["address"] = address
+            params["provider_id"] = providerID
+            params["service_id"] = serviceId
+            params["amount"] = amount
+            
+        case .cartDetails(let uuid):
+            params["uuid"] = uuid
+        case .orderDetails(let orderID):
+            params["order_id"] = orderID
+        case .updateOrderAmount(let orderServiceId, let amount):
+            params["order_service_id"] = orderServiceId
+            params["amount"] = amount
+        case .setting(let type):
+            params["type"] = type
         }
         return params
     }
-
+    
     internal var method: HTTPMethod {
         switch self {
+        // Auth
         case .login, .register, .activation:
             return .post
+        // Home
         case .getCities, .homePage:
+            return .get
+        // Cart
+        case .addToCart, .cartDetails, .orderDetails, .updateOrderAmount:
+            return .post
+        // Setting
+        case .setting:
             return .get
         }
     }

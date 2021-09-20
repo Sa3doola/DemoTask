@@ -15,9 +15,9 @@ protocol CategoryConfigurator {
 
 class CategoryConfiguratorImplementation {
     
-    let model: HomeCategory
+    let model: ProductModel
     
-    init(model: HomeCategory) {
+    init(model: ProductModel) {
         self.model = model
     }
 
