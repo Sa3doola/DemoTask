@@ -25,6 +25,11 @@ final class OrderDetailsViewController: UIViewController {
         configureTable()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     private func configureTable() {
         orderTableView.register(UINib(nibName: "OrderDetailsCell", bundle: nil),
                                 forCellReuseIdentifier: "OrderDetailsCell")

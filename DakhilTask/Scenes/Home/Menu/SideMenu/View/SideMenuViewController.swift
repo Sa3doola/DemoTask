@@ -1,0 +1,67 @@
+//
+//  SideMenuViewController.swift
+//  DakhilTask
+//
+//  Created by Saad Sherif on 9/21/21.
+//
+
+import UIKit
+
+class SideMenuViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var configurator = SideMenuConfiguratorImplementation()
+    
+    var presenter: SideMenuPresenter?
+    
+    // MARK: - IBOutlet
+    
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var menuTableView: UITableView!
+    
+    // MARK: - LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configurator.configure(SideMenuViewController: self)
+        menuTableView.register(UINib(nibName: "SideMenuCell", bundle: nil),
+                               forCellReuseIdentifier: "SideMenuCell")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+}
+
+// MARK: - UITableViewDelegate and DataSource
+
+extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter?.numberOfRows() ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath) as? SideMenuCell else { return UITableViewCell() }
+        
+        presenter?.configure(cell: cell, forRow: indexPath.row)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter?.didSelect(at: indexPath.row)
+    }
+}
+
+extension SideMenuViewController: SideMenuView {
+    
+    func reloadData() {
+        self.menuTableView.reloadData()
+    }
+}
+
+

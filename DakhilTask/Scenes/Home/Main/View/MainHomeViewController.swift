@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import ImageSlideshow
+import SideMenu
 
 final class MainHomeViewController: UIViewController {
     
@@ -16,6 +17,8 @@ final class MainHomeViewController: UIViewController {
     var configurator = MainHomeConfiguratorImplementation()
     
     var presenter: MainHomePresenter?
+    
+    var sideMenu: SideMenuNavigationController?
     
     // MARK: - IBOutlets
     
@@ -37,11 +40,13 @@ final class MainHomeViewController: UIViewController {
         }
         configureCollection()
         configureSlideImage()
+        configureSideMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Helper Functions
@@ -65,6 +70,17 @@ final class MainHomeViewController: UIViewController {
         imageSlide.addGestureRecognizer(gestureRecognizer)
     }
     
+    private func configureSideMenu() {
+        let homeStoryboard = Storyboard.homeSrotyboard
+        let vc: SideMenuViewController = homeStoryboard.instantiateViewController()
+        sideMenu = SideMenuNavigationController(rootViewController: vc)
+        sideMenu?.alwaysAnimate = true
+        SideMenuManager.default.leftMenuNavigationController = sideMenu
+        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+        sideMenu?.leftSide = true
+        sideMenu?.menuWidth = self.view.width - 90
+    }
+    
     // MARK: - IBActions
     
     @objc private func didTapImageSlider() {
@@ -72,7 +88,7 @@ final class MainHomeViewController: UIViewController {
     }
     
     @IBAction func sideMenuWasTapped(_ sender: UIButton) {
-        presenter?.goToMenu()
+        present(sideMenu!, animated: true, completion: nil)
     }
     
     @IBAction func favBtnWasTapped(_ sender: UIButton) {
