@@ -51,7 +51,6 @@ class OrderDetailsPresenterImplementation: OrderDetailsPresenter, UpdateAmountDe
     }
     
     func updateAmount(amount: Int, id: Int) {
-        print("DoneDelegate")
         updateOrderAmount(orderServiceId: id, amount: amount)
     }
     

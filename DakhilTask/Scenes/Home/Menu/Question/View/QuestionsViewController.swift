@@ -51,7 +51,6 @@ final class QuestionsViewController: UIViewController {
         questionTableView.delegate = self
         questionTableView.dataSource = self
     }
-    
 }
 
 // MARK: - UITableViewDelegate and DataSource
@@ -81,6 +80,8 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+// MARK: - QuestionsView
 
 extension QuestionsViewController: QuestionsView {
     func reloadData() {

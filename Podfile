@@ -9,4 +9,5 @@ target 'DakhilTask' do
 	pod 'Alamofire'
  	pod 'GoogleMaps', '5.1.0'
  	pod 'ImageSlideshow/SDWebImage'
+  pod 'SideMenu', '~> 6.0'
 end

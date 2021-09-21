@@ -12,11 +12,13 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - SideMenu (6.5.0)
 
 DEPENDENCIES:
   - Alamofire
   - GoogleMaps (= 5.1.0)
   - ImageSlideshow/SDWebImage
+  - SideMenu (~> 6.0)
 
 SPEC REPOS:
   trunk:
@@ -24,13 +26,15 @@ SPEC REPOS:
     - GoogleMaps
     - ImageSlideshow
     - SDWebImage
+    - SideMenu
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 742b9d06a5433587108ba814c085fa7d504d2908
+PODFILE CHECKSUM: ff20e1b3437488510eeb84a397af1905984cb66c
 
 COCOAPODS: 1.11.0
