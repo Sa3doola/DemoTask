@@ -55,16 +55,15 @@ class SideMenuPresenterImplementation: SideMenuPresenter {
     }
     
     func logOut() {
-//        interactor.logOut { (result) in
-//            switch result {
-//            case.success(_):
-//                UserDefaults.standard.saveToken(token: nil)
-//                UserDefaults.standard.saveUUID(uuid: nil)
-//                self.router.goToLogin()
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
+        interactor.logOut { (result) in
+            switch result {
+            case .success(_):
+                UserDefaults.standard.saveToken(token: nil)
+                self.router.goToLogin()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func didSelect(at row: Int) {

@@ -162,9 +162,11 @@ extension MainHomeViewController: MainHomeView {
     }
     
     func reloadRandomCategory(model: HomeCategory) {
-        self.randomCategoryImage.sd_setImage(with: model.image, completed: nil)
-        self.randomNameLabel.text = model.name
-        self.randomDiscriptionLabel.text = model.categoryDescription
+        if model.image != nil {
+            self.randomCategoryImage.sd_setImage(with: model.image, completed: nil)
+            self.randomNameLabel.text = model.name
+            self.randomDiscriptionLabel.text = model.categoryDescription
+        }
     }
     
     func reloadImageSlides(slide: [Slide]) {

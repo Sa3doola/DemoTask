@@ -10,6 +10,8 @@ import Alamofire
 class SideMenuInteractor {
     
     func logOut(completion: @escaping completion<LogOutModel>) {
-        
+        AF.request(APIRouter.logOut).responseDecodable { (response) in
+            completion(response.result)
+        }
     }
 }
