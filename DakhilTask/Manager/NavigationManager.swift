@@ -11,7 +11,6 @@ class NavigationManager {
     
     static let shared = NavigationManager()
     
-    
     enum Screen {
         case auth
         case tabBar

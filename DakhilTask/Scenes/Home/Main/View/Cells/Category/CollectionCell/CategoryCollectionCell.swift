@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class CategoryCell: UICollectionViewCell, CategoryHomeCellView {
+class CategoryCollectionCell: UICollectionViewCell {
     
     
     @IBOutlet weak var categoryImage: UIImageView!
@@ -19,8 +19,8 @@ class CategoryCell: UICollectionViewCell, CategoryHomeCellView {
         // Initialization code
     }
 
-    func cellConfigure(model: HomeCategory) {
-        self.categoryName.text = model.name
-        self.categoryImage.sd_setImage(with: model.image, completed: nil)
-    }
+//    func cellConfigure(model: HomeCategory) {
+//        self.categoryName.text = model.name
+//        self.categoryImage.sd_setImage(with: model.image, completed: nil)
+//    }
 }

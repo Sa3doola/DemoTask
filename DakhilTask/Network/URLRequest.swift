@@ -19,8 +19,7 @@ protocol URLRequestBuilder: URLRequestConvertible {
     
     var parameters: Parameters? { get }
     
-    var headers:HTTPHeaders {get}
-    
+    var headers:HTTPHeaders { get }
     
     var method: HTTPMethod { get }
     
@@ -44,7 +43,6 @@ extension URLRequestBuilder {
         return URL(string: "https://aldakhil.4hoste.com/api/")!
     }
     
-    
     var requestURL: URL {
         return mainURL.appendingPathComponent(path)
     }
@@ -56,7 +54,6 @@ extension URLRequestBuilder {
         headers["lang"] = "en"
         return headers
     }
-    
     
     var urlRequest: URLRequest {
         var request = URLRequest(url: requestURL)

@@ -7,33 +7,43 @@
 
 import Foundation
 
+//func reloadCollectionData()
+//func reloadRandomCategory( model: HomeCategory)
+//func reloadImageSlides(slide: [Slide])
+
 protocol MainHomeView: AnyObject {
-    func reloadCollectionData()
-    func reloadRandomCategory( model: HomeCategory)
-    func reloadImageSlides(slide: [Slide])
+
 }
 
-protocol ProductHomeCellView {
-    func cellConfigure(model: ProductModel)
+protocol SlideImageCellView {
+    func cellConfigure(model: [Slide])
 }
 
 protocol CategoryHomeCellView {
+    func cellConfigure(model: [HomeCategory])
+}
+
+protocol RandomCategoryCellView {
     func cellConfigure(model: HomeCategory)
+}
+
+protocol ProductHomeCellView {
+    func cellConfigure(model: [ProductModel])
 }
 
 protocol MainHomePresenter {
     func viewDidLoad()
-    func numberOfCategories() -> Int
-    func numberOfProducts() -> Int
-    func configure(cell: ProductHomeCellView, forRow row: Int)
-    func configure(cell: CategoryHomeCellView, forRow row: Int)
-    func goToCart()
-    func deSelectProduct(at row: Int)
-    func deSelectCategory(at row: Int)
+    func configure(cell: SlideImageCellView)
+    func configure(cell: CategoryHomeCellView)
+    func configure(cell: RandomCategoryCellView)
+    func configure(cell: ProductHomeCellView)
     func goToMenu()
+    func goToCart()
 }
 
 class MainHomePresenterImplementation: MainHomePresenter {
+    
+    // MARK: - Properties
     
     fileprivate weak var view: MainHomeView?
     internal let router: MainHomeRouter
@@ -45,64 +55,59 @@ class MainHomePresenterImplementation: MainHomePresenter {
     private var serviceWithOffer: [ProductModel]?
     
     
+    // MARK: - Init
+    
     init(view: MainHomeView,router: MainHomeRouter,interactor:MainHomeInteractor) {
         self.view = view
         self.router = router
         self.interactor = interactor
-        
     }
+    
+    // MARK: - viewDidLoad
     
     func viewDidLoad() {
         fetchData()
     }
     
     func fetchData() {
+        
         interactor.getHomePage { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                self.categories = model.data?.categories
-                self.serviceWithOffer = model.data?.serviceWithOffer
                 self.slides = model.data?.slides
+                self.categories = model.data?.categories
                 self.randomCategory = model.data?.randomCategory
-                DispatchQueue.main.async {
-                    self.view?.reloadCollectionData()
-                    self.view?.reloadRandomCategory(model: self.randomCategory!)
-                    self.view?.reloadImageSlides(slide: self.slides!)
-                }
+                self.serviceWithOffer = model.data?.serviceWithOffer
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-    func numberOfCategories() -> Int {
-        return categories?.count ?? 0
+    // MARK: - TableCellConfigure
+    
+    func configure(cell: SlideImageCellView) {
+        guard let models = self.slides else { return }
+        cell.cellConfigure(model: models)
     }
     
-    func configure(cell: CategoryHomeCellView, forRow row: Int) {
-        guard let data = categories?[row] else { return }
-        cell.cellConfigure(model: data)
+    func configure(cell: CategoryHomeCellView) {
+        guard let models = self.categories else { return }
+        cell.cellConfigure(model: models)
     }
     
-    func deSelectCategory(at row: Int) {
-        guard let data = serviceWithOffer?[row] else { return }
-        router.goToCategory(data)
+    func configure(cell: RandomCategoryCellView) {
+        guard let model = self.randomCategory else { return }
+        cell.cellConfigure(model: model)
     }
     
-    func numberOfProducts() -> Int {
-        return serviceWithOffer?.count ?? 0
+    func configure(cell: ProductHomeCellView) {
+        guard let models = self.serviceWithOffer else { return }
+        cell.cellConfigure(model: models)
     }
     
-    func configure(cell: ProductHomeCellView, forRow row: Int) {
-        guard let data = serviceWithOffer?[row] else { return }
-        cell.cellConfigure(model: data)
-    }
-    
-    func deSelectProduct(at row: Int) {
-        guard let product = serviceWithOffer?[row] else { return }
-        router.goToOffer(product)
-    }
+    // MARK: - Router
     
     func goToCart() {
         router.goToCart()
