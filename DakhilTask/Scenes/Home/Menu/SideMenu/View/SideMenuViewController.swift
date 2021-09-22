@@ -58,9 +58,19 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension SideMenuViewController: SideMenuView {
-    
     func reloadData() {
         self.menuTableView.reloadData()
+    }
+    
+    func showAlertView(_ message: String) {
+        let alert = UIAlertController(title: "logOut", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
+            self.presenter?.logOut()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

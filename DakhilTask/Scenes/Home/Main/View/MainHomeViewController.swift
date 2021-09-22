@@ -65,7 +65,7 @@ final class MainHomeViewController: UIViewController {
         pageIndicator.pageIndicatorTintColor = .white
         imageSlide.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
         imageSlide.pageIndicator = pageIndicator
-        
+        imageSlide.slideshowInterval = 3
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImageSlider))
         imageSlide.addGestureRecognizer(gestureRecognizer)
     }

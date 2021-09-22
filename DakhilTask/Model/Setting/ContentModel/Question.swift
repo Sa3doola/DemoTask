@@ -10,13 +10,13 @@ import Foundation
 // MARK: - QuestionModel
 struct QuestionModel: Codable {
     let key: String?
-    let data: DataClass?
+    let data: QuestionData?
     let msg: String?
     let code: Int?
 }
 
 // MARK: - QuestionData
-struct DataClass: Codable {
+struct QuestionData: Codable {
     let fqs: [Fq]?
 }
 

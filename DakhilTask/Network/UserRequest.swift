@@ -8,13 +8,13 @@
 import Alamofire
 
 enum APIRouter: URLRequestBuilder {
-    
     // MARK: - Authentication
     
     case login(phone:String , password : String, userType: String, deviceID: String, deviceType: String, uuid: String)
     case register(name: String, phoneNumber: String, city_Id: Int, lat: Double, lon: Double, address: String, password: String, password_confirmation: String, address_type_id: String)
     case getCities
     case activation(phone: String, code: String, deviceID: String, deviceType: String, uuid: String)
+    case logOut
     
     // MARK: - Home
     
@@ -53,12 +53,16 @@ enum APIRouter: URLRequestBuilder {
             return "updateAmount"
         case .setting:
             return "sidePages"
+        case .logOut:
+            return "logOut"
         }
     }
     
     internal var parameters: Parameters? {
         var params = Parameters.init()
         switch self {
+        
+        // Auth
         case .login(let phone,let password,let userType,let deviceID,let deviceType,let uuid):
             params["phone"] = phone
             params["password"] = password
@@ -76,7 +80,6 @@ enum APIRouter: URLRequestBuilder {
             params["password"] = password
             params["password_confirmation"] = passwordConfirm
             params["address_type_id"] = addressTypeID
-            
         case .getCities:
             return nil
         case .activation(let phone, let code, let deviceId, let deviceType, let uuid):
@@ -85,8 +88,14 @@ enum APIRouter: URLRequestBuilder {
             params["device_id"] = deviceId
             params["device_type"] = deviceType
             params["uuid"] = uuid
+        case .logOut:
+            return nil
+        // Home
+        
         case .homePage:
             return nil
+            
+        // Cart
         case .addToCart(let uuid, let lat, let lng, let address,
                         let providerID, let serviceId, let amount):
             params["uuid"] = uuid
@@ -96,7 +105,6 @@ enum APIRouter: URLRequestBuilder {
             params["provider_id"] = providerID
             params["service_id"] = serviceId
             params["amount"] = amount
-            
         case .cartDetails(let uuid):
             params["uuid"] = uuid
         case .orderDetails(let orderID):
@@ -104,8 +112,11 @@ enum APIRouter: URLRequestBuilder {
         case .updateOrderAmount(let orderServiceId, let amount):
             params["order_service_id"] = orderServiceId
             params["amount"] = amount
+            
+        // Setting
         case .setting(let type):
             params["type"] = type
+            
         }
         return params
     }
@@ -113,7 +124,7 @@ enum APIRouter: URLRequestBuilder {
     internal var method: HTTPMethod {
         switch self {
         // Auth
-        case .login, .register, .activation:
+        case .login, .register, .activation, .logOut:
             return .post
         // Home
         case .getCities, .homePage:

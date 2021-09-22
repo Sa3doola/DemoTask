@@ -14,6 +14,10 @@ class SideMenuCell: UITableViewCell, SideMenuCellView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var discriptionLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionStyle = .none
+    }
     
     func configure(model: SideMenuModel) {
         

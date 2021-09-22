@@ -15,11 +15,9 @@ final class QuestionsViewController: UIViewController {
     
     var presenter: QuestionsPresenter?
     
-    private let questionTableView: UITableView = {
-        let tabelView = UITableView()
-        tabelView.backgroundColor = .white
-        return tabelView
-    }()
+    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
+    
+    @IBOutlet weak var questionTableView: UITableView!
     
     // MARK: - UIViewController Events
     
@@ -31,52 +29,48 @@ final class QuestionsViewController: UIViewController {
         configureTable()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        questionTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                                 leading: view.leadingAnchor,
-                                 bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                 trailing: view.trailingAnchor,
-                                 padding: .init(top: 10, left: 10, bottom: 20, right: 10),
-                                 size: .init(width: view.width - 20,
-                                             height: view.height - 20))
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.navigationBar.isHidden = false
     }
-    
     // MARK: - Helper Functions
     
     func configureTable() {
-        view.addSubview(questionTableView)
-        questionTableView.register(QuestionTableCell.self,
-                                   forCellReuseIdentifier: QuestionTableCell.id)
-        questionTableView.delegate = self
-        questionTableView.dataSource = self
+        questionTableView.register(UINib(nibName: "QuestionCell", bundle: nil),
+                                   forCellReuseIdentifier: "QuestionCell")
     }
 }
 
 // MARK: - UITableViewDelegate and DataSource
 
 extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.numberOfRows() ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: QuestionTableCell.id, for: indexPath) as? QuestionTableCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as? QuestionCell else { return UITableViewCell() }
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath
         UIView.animate(withDuration: 0.3) {
             self.questionTableView.performBatchUpdates(nil)
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedIndex == indexPath { return 90 }
+        return 70
+    }
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let cell = self.questionTableView.cellForRow(at: indexPath) as? QuestionTableCell {
-            cell.hideAnswerLabel()
+        if let cell = self.questionTableView.cellForRow(at: indexPath) as? QuestionCell {
+            cell.hideAnswer()
         }
     }
 }
@@ -85,6 +79,6 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension QuestionsViewController: QuestionsView {
     func reloadData() {
-        self.questionTableView.reloadData()
+        questionTableView.reloadData()
     }
 }

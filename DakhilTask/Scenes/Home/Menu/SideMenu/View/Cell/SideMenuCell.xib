@@ -47,8 +47,8 @@
                         <color key="textColor" red="0.070588235294117646" green="0.21568627450980393" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Discription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YfB-pd-73t">
-                        <rect key="frame" x="95" y="47" width="90" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Discription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="YfB-pd-73t">
+                        <rect key="frame" x="95" y="47" width="244" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" red="0.43137254901960786" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -62,6 +62,7 @@
                     <constraint firstItem="YfB-pd-73t" firstAttribute="leading" secondItem="Usq-eb-BC3" secondAttribute="trailing" constant="15" id="Vkb-4p-N5B"/>
                     <constraint firstItem="BxV-vp-LMO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="oaz-C7-0Qu"/>
                     <constraint firstAttribute="bottom" secondItem="Usq-eb-BC3" secondAttribute="bottom" constant="15" id="obO-rY-bRC"/>
+                    <constraint firstAttribute="trailing" secondItem="YfB-pd-73t" secondAttribute="trailing" constant="20" id="tcd-FV-QAH"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

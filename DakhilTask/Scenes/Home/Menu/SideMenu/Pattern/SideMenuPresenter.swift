@@ -9,6 +9,7 @@ import Foundation
 
 protocol SideMenuView: AnyObject {
     func reloadData()
+    func showAlertView(_ message: String)
 }
 
 protocol SideMenuCellView {
@@ -19,13 +20,20 @@ protocol SideMenuPresenter {
     func numberOfRows() -> Int
     func configure(cell: SideMenuCellView, forRow row: Int)
     func didSelect(at row: Int)
+    func logOut()
 }
 
 class SideMenuPresenterImplementation: SideMenuPresenter {
     
     fileprivate weak var view: SideMenuView?
     internal let router: SideMenuRouter
+    internal let interactor : SideMenuInteractor
     
+    init(view: SideMenuView, router: SideMenuRouter, interactor: SideMenuInteractor) {
+        self.view = view
+        self.router = router
+        self.interactor = interactor
+    }
     
     let models: [SideMenuModel] = [
         SideMenuModel(id: 0, viewColor: #colorLiteral(red: 0.4078431373, green: 0.9215686275, blue: 0.768627451, alpha: 1), image: "Language", name: "Language", discription: "Choose app language"),
@@ -37,11 +45,6 @@ class SideMenuPresenterImplementation: SideMenuPresenter {
         SideMenuModel(id: 6, viewColor: #colorLiteral(red: 0.9333333333, green: 0.1725490196, blue: 0.1725490196, alpha: 1), image: "LogOut", name: "Log Out", discription: "Log Out from Account")
     ]
     
-    init(view: SideMenuView, router: SideMenuRouter) {
-        self.view = view
-        self.router = router
-    }
-    
     func numberOfRows() -> Int {
         return models.count
     }
@@ -51,6 +54,19 @@ class SideMenuPresenterImplementation: SideMenuPresenter {
         cell.configure(model: data)
     }
     
+    func logOut() {
+//        interactor.logOut { (result) in
+//            switch result {
+//            case.success(_):
+//                UserDefaults.standard.saveToken(token: nil)
+//                UserDefaults.standard.saveUUID(uuid: nil)
+//                self.router.goToLogin()
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            }
+//        }
+    }
+    
     func didSelect(at row: Int) {
         let id = models[row].id
         
@@ -58,17 +74,17 @@ class SideMenuPresenterImplementation: SideMenuPresenter {
         case 0:
             print("\(id)")
         case 1:
-            print("\(id)")
+            router.goToAboutUs()
         case 2:
-            print("\(id)")
+            router.goToQuestion()
         case 3:
-            print("\(id)")
+            router.goToTerms()
         case 4:
             print("\(id)")
         case 5:
-            print("\(id)")
+            router.goToContactus()
         case 6:
-            print("\(id)")
+            self.view?.showAlertView("Are you Sure that you want logOut!")
         default:
             print("\(id)")
         }
