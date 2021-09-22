@@ -17,8 +17,8 @@ class SideMenuConfiguratorImplementation {
         
         let view = SideMenuViewController
         let router = SideMenuRouterImplementation(SideMenuViewController: view)
-        
-        let presenter = SideMenuPresenterImplementation(view: view, router: router)
+        let interactor = SideMenuInteractor()
+        let presenter = SideMenuPresenterImplementation(view: view, router: router, interactor: interactor)
         
         SideMenuViewController.presenter = presenter
     }

@@ -65,7 +65,7 @@ final class MainHomeViewController: UIViewController {
         pageIndicator.pageIndicatorTintColor = .white
         imageSlide.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
         imageSlide.pageIndicator = pageIndicator
-        
+        imageSlide.slideshowInterval = 3
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImageSlider))
         imageSlide.addGestureRecognizer(gestureRecognizer)
     }
@@ -162,9 +162,11 @@ extension MainHomeViewController: MainHomeView {
     }
     
     func reloadRandomCategory(model: HomeCategory) {
-        self.randomCategoryImage.sd_setImage(with: model.image, completed: nil)
-        self.randomNameLabel.text = model.name
-        self.randomDiscriptionLabel.text = model.categoryDescription
+        if model.image != nil {
+            self.randomCategoryImage.sd_setImage(with: model.image, completed: nil)
+            self.randomNameLabel.text = model.name
+            self.randomDiscriptionLabel.text = model.categoryDescription
+        }
     }
     
     func reloadImageSlides(slide: [Slide]) {

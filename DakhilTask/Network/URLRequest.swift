@@ -19,6 +19,9 @@ protocol URLRequestBuilder: URLRequestConvertible {
     
     var parameters: Parameters? { get }
     
+    var headers:HTTPHeaders {get}
+    
+    
     var method: HTTPMethod { get }
     
     var encoding: ParameterEncoding { get }
@@ -46,9 +49,21 @@ extension URLRequestBuilder {
         return mainURL.appendingPathComponent(path)
     }
     
+    var headers:HTTPHeaders{
+        var headers = HTTPHeaders()
+        headers["Accept"] = "application/json"
+        headers["Authorization"] = "Bearer " + (UserDefaults.standard.loadToken() ?? "")
+        headers["lang"] = "en"
+        return headers
+    }
+    
+    
     var urlRequest: URLRequest {
         var request = URLRequest(url: requestURL)
         request.httpMethod = method.rawValue
+        headers.forEach { header in
+            request.addValue(header.value, forHTTPHeaderField: header.name)
+        }
         return request
     }
     
