@@ -121,6 +121,8 @@ enum APIRouter: URLRequestBuilder {
         return params
     }
     
+    
+    
     internal var method: HTTPMethod {
         switch self {
         // Auth
