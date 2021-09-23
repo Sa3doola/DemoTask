@@ -34,7 +34,6 @@ class MainHomeRouterImplementation: MainHomeRouter {
         let vc: ProductViewController = home.instantiateViewController()
         vc.configurator = ProductConfiguratorImplementation(model: model)
         self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func goToCategory(_ model: ProductModel) {

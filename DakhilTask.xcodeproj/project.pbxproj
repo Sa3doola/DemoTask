@@ -127,6 +127,9 @@
 		D9F6C2A826F534E3000BE44C /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C2A726F534E3000BE44C /* Validation.swift */; };
 		D9F6C2B826F541F5000BE44C /* OfferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C2B626F541F5000BE44C /* OfferCell.swift */; };
 		D9F6C2B926F541F5000BE44C /* OfferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9F6C2B726F541F5000BE44C /* OfferCell.xib */; };
+		D9FA6ACF26FCB2EA003ACDFA /* OfferCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA6ACE26FCB2EA003ACDFA /* OfferCellPresenter.swift */; };
+		D9FA6AD226FCB2F8003ACDFA /* OfferCellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA6AD126FCB2F8003ACDFA /* OfferCellRouter.swift */; };
+		D9FA6AD526FCB31B003ACDFA /* OfferCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FA6AD426FCB31B003ACDFA /* OfferCellConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +256,9 @@
 		D9F6C2A726F534E3000BE44C /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		D9F6C2B626F541F5000BE44C /* OfferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCell.swift; sourceTree = "<group>"; };
 		D9F6C2B726F541F5000BE44C /* OfferCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OfferCell.xib; sourceTree = "<group>"; };
+		D9FA6ACE26FCB2EA003ACDFA /* OfferCellPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCellPresenter.swift; sourceTree = "<group>"; };
+		D9FA6AD126FCB2F8003ACDFA /* OfferCellRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCellRouter.swift; sourceTree = "<group>"; };
+		D9FA6AD426FCB31B003ACDFA /* OfferCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferCellConfigurator.swift; sourceTree = "<group>"; };
 		FFAB365DA67F348708720F13 /* Pods-DakhilTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DakhilTask.debug.xcconfig"; path = "Target Support Files/Pods-DakhilTask/Pods-DakhilTask.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -880,6 +886,9 @@
 		D99C159B26FC962E00815B3D /* Pattern */ = {
 			isa = PBXGroup;
 			children = (
+				D9FA6ACE26FCB2EA003ACDFA /* OfferCellPresenter.swift */,
+				D9FA6AD126FCB2F8003ACDFA /* OfferCellRouter.swift */,
+				D9FA6AD426FCB31B003ACDFA /* OfferCellConfigurator.swift */,
 			);
 			path = Pattern;
 			sourceTree = "<group>";
@@ -1208,6 +1217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9206F9E26F6448000B017B9 /* ProductPresenter.swift in Sources */,
+				D9FA6AD526FCB31B003ACDFA /* OfferCellConfigurator.swift in Sources */,
 				D948E9C426F4C00000074298 /* ActivationConfigurator.swift in Sources */,
 				D9085AFD26FA2CF0002B379B /* AboutUsConfigurator.swift in Sources */,
 				D9BD7C4C26FC78CF00F6C2FA /* CategoryCollecCell.swift in Sources */,
@@ -1220,6 +1230,7 @@
 				D947A51B26F9E63600B0DE60 /* SideMenuRouter.swift in Sources */,
 				D9085AED26FA2CDB002B379B /* ContactUsRouter.swift in Sources */,
 				D95C631C26F9FE49007B8F2B /* LogOutModel.swift in Sources */,
+				D9FA6ACF26FCB2EA003ACDFA /* OfferCellPresenter.swift in Sources */,
 				D948E9DE26F4C18700074298 /* MainHomeInteractor.swift in Sources */,
 				D9085ACC26FA2050002B379B /* NavigationManager.swift in Sources */,
 				D948E99F26F4BF7000074298 /* BaseTabBarController.swift in Sources */,
@@ -1250,6 +1261,7 @@
 				D96F1A1F26FC9715002EFF4C /* CategoryCellConfigurator.swift in Sources */,
 				D948E9DB26F4C18700074298 /* MainHomePresenter.swift in Sources */,
 				D948E9C226F4C00000074298 /* ActivationViewController.swift in Sources */,
+				D9FA6AD226FCB2F8003ACDFA /* OfferCellRouter.swift in Sources */,
 				D9F6C2B826F541F5000BE44C /* OfferCell.swift in Sources */,
 				D948E9A926F4BFB700074298 /* LoginRouter.swift in Sources */,
 				D9085AE026FA2CC3002B379B /* TermsAndConditionsPresenter.swift in Sources */,

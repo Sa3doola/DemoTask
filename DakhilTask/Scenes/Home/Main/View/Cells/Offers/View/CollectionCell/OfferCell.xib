@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="OfferCell" customModule="DakhilTask" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OfferCell" id="gTV-IL-0wX" customClass="OfferCell" customModule="DakhilTask" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="325" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -170,10 +170,8 @@
                             <constraint firstAttribute="trailing" secondItem="1c2-po-1sh" secondAttribute="trailing" id="4PU-g5-FCw"/>
                             <constraint firstAttribute="trailing" secondItem="YcX-dE-HRi" secondAttribute="trailing" id="6rl-JA-yZ3"/>
                             <constraint firstItem="1c2-po-1sh" firstAttribute="leading" secondItem="zZl-O9-EqM" secondAttribute="leading" id="BBA-5H-dM4"/>
-                            <constraint firstAttribute="width" constant="315" id="TQk-44-fb5"/>
                             <constraint firstItem="YcX-dE-HRi" firstAttribute="leading" secondItem="zZl-O9-EqM" secondAttribute="leading" id="U0O-g2-ZBe"/>
                             <constraint firstItem="YcX-dE-HRi" firstAttribute="top" secondItem="zZl-O9-EqM" secondAttribute="top" id="U3P-oD-IfZ"/>
-                            <constraint firstAttribute="height" constant="190" id="paM-2h-ic3"/>
                             <constraint firstAttribute="bottom" secondItem="YcX-dE-HRi" secondAttribute="bottom" id="rhQ-oa-g7T"/>
                             <constraint firstAttribute="bottom" secondItem="1c2-po-1sh" secondAttribute="bottom" id="vkE-h3-peY"/>
                         </constraints>
