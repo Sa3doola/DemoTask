@@ -54,21 +54,6 @@ final class MainHomeViewController: UIViewController {
                                forCellReuseIdentifier: "OfferTableCell")
     }
     
-    
-//    private func configureSlideImage() {
-//        imageSlide.contentScaleMode = .scaleAspectFill
-//        let pageIndicator = UIPageControl()
-//        pageIndicator.currentPageIndicatorTintColor = #colorLiteral(red: 0.9529411765, green: 0.5725490196, blue: 0.1450980392, alpha: 1)
-//        pageIndicator.pageIndicatorTintColor = .white
-//        imageSlide.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .bottom)
-//        imageSlide.pageIndicator = pageIndicator
-//        imageSlide.slideshowInterval = 3
-//        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImageSlider))
-//        imageSlide.addGestureRecognizer(gestureRecognizer)
-    
-    ///    imageSlide.presentFullScreenController(from: self)
-//    }
-    
     private func configureSideMenu() {
         let homeStoryboard = Storyboard.homeSrotyboard
         let vc: SideMenuViewController = homeStoryboard.instantiateViewController()
@@ -98,12 +83,15 @@ final class MainHomeViewController: UIViewController {
 // MARK: - UITableViewDelegate and DataSource
 
 extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         
         switch indexPath.row {
         case 0:
@@ -196,29 +184,12 @@ extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - MainHomeView
 
 extension MainHomeViewController: MainHomeView {
-    
+    func reloadData() {
+        self.mainTableView.reloadData()
+    }
 }
 
 //func reloadCollectionData() {
 //        self.categoryCollectionView.reloadData()
 //        self.offerCollectionView.reloadData()
-//    }
-//
-//    func reloadRandomCategory(model: HomeCategory) {
-//        if model.image != nil {
-//            self.randomCategoryImage.sd_setImage(with: model.image, completed: nil)
-//            self.randomNameLabel.text = model.name
-//            self.randomDiscriptionLabel.text = model.categoryDescription
-//        }
-//    }
-//
-//    func reloadImageSlides(slide: [Slide]) {
-//        let first = slide[0].image
-//        let secound = slide[1].image
-//        let third = slide[2].image
-//        imageSlide.setImageInputs([
-//            SDWebImageSource(url: first!),
-//            SDWebImageSource(url: secound!),
-//            SDWebImageSource(url: third!)
-//        ])
 //    }

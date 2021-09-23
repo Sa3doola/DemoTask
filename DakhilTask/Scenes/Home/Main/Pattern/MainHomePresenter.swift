@@ -7,12 +7,8 @@
 
 import Foundation
 
-//func reloadCollectionData()
-//func reloadRandomCategory( model: HomeCategory)
-//func reloadImageSlides(slide: [Slide])
-
 protocol MainHomeView: AnyObject {
-
+    func reloadData()
 }
 
 protocol SlideImageCellView {
@@ -54,7 +50,6 @@ class MainHomePresenterImplementation: MainHomePresenter {
     private var randomCategory: HomeCategory?
     private var serviceWithOffer: [ProductModel]?
     
-    
     // MARK: - Init
     
     init(view: MainHomeView,router: MainHomeRouter,interactor:MainHomeInteractor) {
@@ -70,7 +65,6 @@ class MainHomePresenterImplementation: MainHomePresenter {
     }
     
     func fetchData() {
-        
         interactor.getHomePage { [weak self] (result) in
             guard let self = self else { return }
             switch result {
@@ -79,6 +73,9 @@ class MainHomePresenterImplementation: MainHomePresenter {
                 self.categories = model.data?.categories
                 self.randomCategory = model.data?.randomCategory
                 self.serviceWithOffer = model.data?.serviceWithOffer
+                DispatchQueue.main.async {
+                    self.view?.reloadData()
+                }
             case .failure(let error):
                 print(error.localizedDescription)
             }
