@@ -7,26 +7,31 @@
 
 import UIKit
 
-protocol CellDelegate: class {
-    func setModels(models: [HomeCategory])
+protocol CategoryTableViewCell {
+    func reloadData()
+    var presenter: MainHomePresenter? { get }
 }
 
-class CatgTableCell: UITableViewCell, CategoryHomeCellView {
+class CatgTableCell: UITableViewCell, CategoryTableViewCell {
     
-    var configurator = CategoryCellConfiguratorImplementation()
+    // MARK: - Properties
     
-    var presenter: CategoryCellPresenter?
+    static let id  = String(describing: CatgTableCell.self)
     
-    weak var delegate: CellDelegate?
+    var presenter: MainHomePresenter?
+    
+    // MARK: - IBOutlet
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
+    // MARK: - awakeFromNib
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        configurator.configure(CategoryTableCell: self)
-        presenter?.viewDidLoad()
         configureCollection()
     }
+    
+    // MARK: - Helper Functions
 
     func configureCollection() {
         categoryCollectionView.register(UINib(nibName: "CategoryCollecCell", bundle: nil),
@@ -35,38 +40,33 @@ class CatgTableCell: UITableViewCell, CategoryHomeCellView {
         categoryCollectionView.dataSource = self
     }
     
-    func cellConfigure(model: [HomeCategory]) {
-        self.delegate?.setModels(models: model)
+    func reloadData() {
+        self.categoryCollectionView.reloadData()
     }
     
+    // MARK: - IBActions
+    
     @IBAction func showAllWasTapped(_ sender: UIButton) {
-        
+        print("Show All ")
     }
 }
 
-extension CatgTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: - UICollectionViewDelegate and DataSource
+
+extension CatgTableCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.numberOfRows() ?? 0
+        return presenter?.numberOfCategoriesRows ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollecCell", for: indexPath) as? CategoryCollecCell else { return UICollectionViewCell() }
-        presenter?.configure(cell: cell, at: indexPath.row)
+        presenter?.configureCategoryCollectionCell(cell: cell, row: indexPath.row)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-    }
-}
-
-extension CatgTableCell: CatCellView {
-    func setDelegate(delegate: CellDelegate) {
-        self.delegate = delegate
-    }
-    
-    func reloadData() {
-        self.categoryCollectionView.reloadData()
+        presenter?.didSelectCategory(row: indexPath.row)
     }
 }

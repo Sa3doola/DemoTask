@@ -99,8 +99,9 @@ extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
             presenter?.configure(cell: cell)
             return cell
         case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "CatgTableCell", for: indexPath) as? CatgTableCell else { return UITableViewCell() }
-            presenter?.configure(cell: cell)
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: CatgTableCell.id, for: indexPath) as? CatgTableCell else { return UITableViewCell() }
+            cell.presenter = self.presenter
+            presenter?.configreCategoryTableCell(cell: cell)
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "RandomTableCell", for: indexPath) as? RandomTableCell else { return UITableViewCell() }
@@ -108,78 +109,14 @@ extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableCell", for: indexPath) as? OfferTableCell else { return UITableViewCell() }
-            presenter?.configure(cell: cell)
+            cell.presenter = self.presenter
+            presenter?.configureOfferTableCell(cell: cell)
             return cell
         default:
             return UITableViewCell()
         }
     }
 }
-
-//    @objc private func didTapImageSlider() {
-//    }
-//
-//    @IBAction func sideMenuWasTapped(_ sender: UIButton) {
-//        present(sideMenu!, animated: true, completion: nil)
-//    }
-//
-//    @IBAction func favBtnWasTapped(_ sender: UIButton) {
-//
-//    }
-//
-//    @IBAction func cartBtnWasTapped(_ sender: UIButton) {
-//        presenter?.goToCart()
-//    }
-//
-//    @IBAction func showAllWasTapped(_ sender: UIButton) {
-//
-//    }
-
-//extension MainHomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        let tag = collectionView.tag
-//        switch tag {
-//        case 0:
-//            return presenter?.numberOfCategories() ?? 0
-//        case 1:
-//            return presenter?.numberOfProducts() ?? 0
-//        default:
-//            return 1
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let tag = collectionView.tag
-//
-//        switch tag {
-//        case 0:
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as? CategoryCell else { return UICollectionViewCell() }
-//            presenter?.configure(cell: cell, forRow: indexPath.row)
-//            return cell
-//        case 1:
-//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OfferCell", for: indexPath) as? OfferCell else { return UICollectionViewCell() }
-//            presenter?.configure(cell: cell, forRow: indexPath.row)
-//            return cell
-//        default:
-//            return UICollectionViewCell()
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        collectionView.deselectItem(at: indexPath, animated: true)
-//        let tag = collectionView.tag
-//
-//        switch tag {
-//        case 0:
-//            presenter?.deSelectCategory(at: indexPath.row)
-//        case 1:
-//            presenter?.deSelectProduct(at: indexPath.row)
-//        default:
-//            print("non")
-//        }
-//    }
-//}
 
 // MARK: - MainHomeView
 
@@ -188,8 +125,3 @@ extension MainHomeViewController: MainHomeView {
         self.mainTableView.reloadData()
     }
 }
-
-//func reloadCollectionData() {
-//        self.categoryCollectionView.reloadData()
-//        self.offerCollectionView.reloadData()
-//    }

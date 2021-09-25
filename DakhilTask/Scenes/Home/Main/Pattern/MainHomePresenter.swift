@@ -11,28 +11,38 @@ protocol MainHomeView: AnyObject {
     func reloadData()
 }
 
+// Cell
+
 protocol SlideImageCellView {
     func cellConfigure(model: [Slide])
-}
-
-protocol CategoryHomeCellView {
-    func cellConfigure(model: [HomeCategory])
 }
 
 protocol RandomCategoryCellView {
     func cellConfigure(model: HomeCategory)
 }
 
-protocol ProductHomeCellView {
-    func cellConfigure(model: [ProductModel])
-}
+// Collection Cells
 
 protocol MainHomePresenter {
     func viewDidLoad()
+    
+    // Cell with View
     func configure(cell: SlideImageCellView)
-    func configure(cell: CategoryHomeCellView)
     func configure(cell: RandomCategoryCellView)
-    func configure(cell: ProductHomeCellView)
+    
+    // CellWithCollection
+    /// CatagoryCell
+    func configreCategoryTableCell(cell: CategoryTableViewCell)
+    var numberOfCategoriesRows: Int { get }
+    func configureCategoryCollectionCell(cell: CategoryCollectionCell, row: Int)
+    func didSelectCategory(row: Int)
+    
+    /// OfferCell
+    func configureOfferTableCell(cell: OfferTableViewCell)
+    var numberOfOfferRows: Int { get }
+    func configureOfferCollectionCell(cell: OfferCollectionCell, row: Int)
+    func didSelectOffer(row: Int)
+    // Router
     func goToMenu()
     func goToCart()
 }
@@ -88,20 +98,49 @@ class MainHomePresenterImplementation: MainHomePresenter {
         guard let models = self.slides else { return }
         cell.cellConfigure(model: models)
     }
-    
-    func configure(cell: CategoryHomeCellView) {
-        guard let models = self.categories else { return }
-        cell.cellConfigure(model: models)
-    }
+
     
     func configure(cell: RandomCategoryCellView) {
         guard let model = self.randomCategory else { return }
         cell.cellConfigure(model: model)
     }
     
-    func configure(cell: ProductHomeCellView) {
-        guard let models = self.serviceWithOffer else { return }
-        cell.cellConfigure(model: models)
+    // MARK: - TableCellConfigure with Collections
+    
+    func configreCategoryTableCell(cell: CategoryTableViewCell) {
+        cell.reloadData()
+    }
+    
+    
+    var numberOfCategoriesRows: Int {
+        return categories?.count ?? 0
+    }
+    
+    func configureCategoryCollectionCell(cell: CategoryCollectionCell, row: Int) {
+        guard let data = categories?[row] else { return }
+        cell.configre(model: data)
+    }
+    
+    func didSelectCategory(row: Int) {
+       print("cellRow: \(row)")
+    }
+    
+    func configureOfferTableCell(cell: OfferTableViewCell) {
+        cell.reloadData()
+    }
+    
+    var numberOfOfferRows: Int {
+        return serviceWithOffer?.count ?? 0
+    }
+    
+    func configureOfferCollectionCell(cell: OfferCollectionCell, row: Int) {
+        guard let data = serviceWithOffer?[row] else { return }
+        cell.configre(model: data)
+    }
+    
+    func didSelectOffer(row: Int) {
+        guard let data = serviceWithOffer?[row] else { return }
+        router.goToOffer(data)
     }
     
     // MARK: - Router

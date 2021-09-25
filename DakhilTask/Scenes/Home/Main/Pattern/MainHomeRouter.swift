@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 protocol MainHomeRouter {
     func goToOffer(_ model: ProductModel)
     func goToCategory(_ model: ProductModel)
@@ -17,10 +16,10 @@ protocol MainHomeRouter {
 
 class MainHomeRouterImplementation: MainHomeRouter {
     
-    
     fileprivate weak var MainHomeViewController: MainHomeViewController?
     
     let home = Storyboard.homeSrotyboard
+    
     init(MainHomeViewController: MainHomeViewController) {
         self.MainHomeViewController = MainHomeViewController
     }
@@ -30,15 +29,15 @@ class MainHomeRouterImplementation: MainHomeRouter {
         self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func goToOffer(_ model: ProductModel) {
-        let vc: ProductViewController = home.instantiateViewController()
-        vc.configurator = ProductConfiguratorImplementation(model: model)
-        self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     func goToCategory(_ model: ProductModel) {
         let vc: CategoryViewController = home.instantiateViewController()
         vc.configurator = CategoryConfiguratorImplementation(model: model)
+        self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToOffer(_ model: ProductModel) {
+        let vc: ProductViewController = home.instantiateViewController()
+        vc.configurator = ProductConfiguratorImplementation(model: model)
         self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     

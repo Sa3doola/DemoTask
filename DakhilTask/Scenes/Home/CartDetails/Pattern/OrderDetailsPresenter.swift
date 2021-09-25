@@ -68,7 +68,6 @@ class OrderDetailsPresenterImplementation: OrderDetailsPresenter, UpdateAmountDe
         }
     }
     
-    
     func fetchOrderData() {
         guard let orderId = model?.id else { return }
         interactor.getOrderDetails(orderId: orderId) { [weak self] (result) in

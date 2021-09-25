@@ -22,7 +22,6 @@ class MainHomeConfiguratorImplementation {
         let interactor = MainHomeInteractor()
         let presenter = MainHomePresenterImplementation(view: view, router: router,interactor:interactor)
         
-        
         MainHomeViewController.presenter = presenter
     }
     

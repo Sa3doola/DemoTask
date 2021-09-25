@@ -7,24 +7,19 @@
 
 import UIKit
 
-protocol OfferCellDelegate: class {
-    func setModels(models: [ProductModel])
+protocol OfferTableViewCell {
+    func reloadData()
+    var presenter: MainHomePresenter? { get }
 }
 
-class OfferTableCell: UITableViewCell, ProductHomeCellView {
+class OfferTableCell: UITableViewCell, OfferTableViewCell {
     
-    var configurator = OfferCellConfiguratorImplementaion()
-    
-    var presenter: OfferCellPresenter?
-    
-    weak var delegate: OfferCellDelegate?
+    var presenter: MainHomePresenter?
     
     @IBOutlet weak var offerCollectionView: UICollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configurator.configure(OfferTableCell: self)
-        presenter?.viewDidLoad()
         configureCollection()
     }
     
@@ -35,38 +30,27 @@ class OfferTableCell: UITableViewCell, ProductHomeCellView {
         offerCollectionView.dataSource = self
     }
     
-    func cellConfigure(model: [ProductModel]) {
-        self.delegate?.setModels(models: model)
+    func reloadData() {
+        self.offerCollectionView.reloadData()
     }
 }
 
 extension OfferTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.numberOfRows() ?? 0
+        return presenter?.numberOfOfferRows ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OfferCell", for: indexPath) as? OfferCell else {
             return UICollectionViewCell()
         }
-        presenter?.configure(cell: cell, at: indexPath.row)
+        presenter?.configureOfferCollectionCell(cell: cell, row: indexPath.row)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        presenter?.didSelect(row: indexPath.row)
-    }
-}
-
-extension OfferTableCell: OfferTableCellView {
-    
-    func setDelegate(delegate: OfferCellDelegate) {
-        self.delegate = delegate
-    }
-    
-    func reloadData() {
-        offerCollectionView.reloadData()
+        presenter?.didSelectOffer(row: indexPath.row)
     }
 }

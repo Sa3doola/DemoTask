@@ -8,7 +8,11 @@
 import UIKit
 import SDWebImage
 
-class CategoryCollecCell: UICollectionViewCell, CategoryCollectionCellView {
+protocol CategoryCollectionCell {
+    func configre(model: HomeCategory)
+}
+
+class CategoryCollecCell: UICollectionViewCell, CategoryCollectionCell {
 
     @IBOutlet weak var CategoryImage: UIImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!
@@ -18,9 +22,8 @@ class CategoryCollecCell: UICollectionViewCell, CategoryCollectionCellView {
         // Initialization code
     }
     
-    func cellConfigure(_ model: HomeCategory) {
+    func configre(model: HomeCategory) {
         CategoryImage.sd_setImage(with: model.image, completed: nil)
         categoryNameLabel.text = model.name
     }
-
 }

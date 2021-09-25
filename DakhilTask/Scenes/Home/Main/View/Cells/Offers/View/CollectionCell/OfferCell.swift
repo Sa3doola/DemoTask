@@ -8,7 +8,11 @@
 import UIKit
 import SDWebImage
 
-class OfferCell: UICollectionViewCell, OfferCollectionCellView{
+protocol OfferCollectionCell {
+    func configre(model: ProductModel)
+}
+
+class OfferCell: UICollectionViewCell, OfferCollectionCell {
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var precentDicountLabel: UILabel!
@@ -20,23 +24,14 @@ class OfferCell: UICollectionViewCell, OfferCollectionCellView{
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
-    func cellConfigure(model: ProductModel) {
-        self.productImage.sd_setImage(with: model.image, completed: nil)
-          guard let discount = model.discountPercentage else { return }
-          self.precentDicountLabel.text = "\(discount)%"
-          self.productNameLabel.text = model.name
-          self.sellerNameLabel.text = model.providerName
-          guard let price = model.priceAfterDiscount else { return }
-          self.priceLabel.text = "\(price)SR"
-          self.measurmentLabel.text = model.measurement
-          guard let distance = model.distance else { return }
-          self.distanceLabel.text = "\(distance))km"
+    func configre(model: ProductModel) {
+        productImage.sd_setImage(with: model.image, completed: nil)
+        
     }
-
-
+  
     @IBAction func favBtnWasTapped(_ sender: UIButton) {
         print("Fav Was Tapped")
     }
