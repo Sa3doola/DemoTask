@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 // MARK: - Storyboard
 
@@ -52,6 +53,12 @@ extension UserDefaults {
         UserDefaults.standard.set(address, forKey: "address")
     }
     
+    func saveLocation(location: CLLocation) {
+        if let encodedLocation = try? NSKeyedArchiver.archivedData(withRootObject: location, requiringSecureCoding: false) {
+            UserDefaults.standard.set(encodedLocation, forKey: "SavedLocation")
+        }
+    }
+    
     // MARK: - Load
     
     func loadToken() -> String? {
@@ -67,6 +74,15 @@ extension UserDefaults {
     func loadAddress() -> String? {
         let address = UserDefaults.standard.value(forKey: "address")
         return address as? String
+    }
+    
+    func loadLocation() -> CLLocation {
+        var location: CLLocation!
+        if let loadedLocation = UserDefaults.standard.data(forKey: "SavedLocation"),
+           let decodedLocation = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(loadedLocation) as? CLLocation {
+            location = decodedLocation
+        }
+        return location
     }
     
 }

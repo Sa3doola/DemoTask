@@ -13,10 +13,6 @@ protocol MainHomeView: AnyObject {
 
 // Cell
 
-protocol SlideImageCellView {
-    func cellConfigure(model: [Slide])
-}
-
 protocol RandomCategoryCellView {
     func cellConfigure(model: HomeCategory)
 }
@@ -42,13 +38,15 @@ protocol MainHomePresenter {
     var numberOfOfferRows: Int { get }
     func configureOfferCollectionCell(cell: OfferCollectionCell, row: Int)
     func didSelectOffer(row: Int)
+    
     // Router
     func goToMenu()
     func goToCart()
+    func goToAllCategories()
 }
 
 class MainHomePresenterImplementation: MainHomePresenter {
-    
+
     // MARK: - Properties
     
     fileprivate weak var view: MainHomeView?
@@ -98,7 +96,6 @@ class MainHomePresenterImplementation: MainHomePresenter {
         guard let models = self.slides else { return }
         cell.cellConfigure(model: models)
     }
-
     
     func configure(cell: RandomCategoryCellView) {
         guard let model = self.randomCategory else { return }
@@ -151,5 +148,8 @@ class MainHomePresenterImplementation: MainHomePresenter {
     
     func goToMenu() {
         router.goToMenu()
+    }
+    func goToAllCategories() {
+        router.goToAllCategories()
     }
 }

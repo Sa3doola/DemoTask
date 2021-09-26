@@ -8,7 +8,6 @@
 import Foundation
 
 // MARK: - HomePageModel
-
 struct HomePageModel: Codable {
     let key: String?
     let data: DataHomeClass?
@@ -17,7 +16,6 @@ struct HomePageModel: Codable {
 }
 
 // MARK: - DataHomeClass
-
 struct DataHomeClass: Codable {
     let slides: [Slide]?
     let categories: [HomeCategory]?
@@ -32,7 +30,6 @@ struct DataHomeClass: Codable {
 }
 
 // MARK: - HomeCategory
-
 struct HomeCategory: Codable {
     let id: Int?
     let name, categoryDescription: String?
@@ -46,7 +43,6 @@ struct HomeCategory: Codable {
 }
 
 // MARK: - ServiceWithOffer
-
 struct ProductModel: Codable {
     let id: Int?
     let status: String?

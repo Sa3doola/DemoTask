@@ -66,6 +66,9 @@ extension MapViewController: CLLocationManagerDelegate, GMSMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
+        
+        UserDefaults.standard.saveLocation(location: location)
+        
         let lat = location.coordinate.latitude
         let lng = location.coordinate.longitude
         marker.position = CLLocationCoordinate2D(latitude: lat,

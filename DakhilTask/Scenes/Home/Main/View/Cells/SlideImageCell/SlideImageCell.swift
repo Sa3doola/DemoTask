@@ -9,6 +9,10 @@ import UIKit
 import ImageSlideshow
 import SDWebImage
 
+protocol SlideImageCellView {
+    func cellConfigure(model: [Slide])
+}
+
 class SlideImageCell: UITableViewCell, SlideImageCellView {
     
     @IBOutlet weak var imageSlideShow: ImageSlideshow!

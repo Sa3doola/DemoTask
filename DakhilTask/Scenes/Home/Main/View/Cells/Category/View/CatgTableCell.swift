@@ -47,7 +47,7 @@ class CatgTableCell: UITableViewCell, CategoryTableViewCell {
     // MARK: - IBActions
     
     @IBAction func showAllWasTapped(_ sender: UIButton) {
-        print("Show All ")
+        presenter?.goToAllCategories()
     }
 }
 

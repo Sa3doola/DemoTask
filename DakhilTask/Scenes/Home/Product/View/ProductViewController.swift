@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreLocation
 import SDWebImage
 
 final class ProductViewController: UIViewController {
@@ -16,7 +15,6 @@ final class ProductViewController: UIViewController {
     var configurator: ProductConfiguratorImplementation!
     
     var presenter: ProductPresenter?
-    var locationManager = CLLocationManager()
     
     var amount = 1 {
         didSet {
@@ -42,14 +40,7 @@ final class ProductViewController: UIViewController {
         super.viewDidLoad()
         configurator.configure(ProductViewController: self)
         presenter?.viewDidLoad()
-        DispatchQueue.main.async {
-            self.locationManager.requestWhenInUseAuthorization()
-            if CLLocationManager.locationServicesEnabled() {
-                self.locationManager.delegate = self
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-                self.locationManager.startUpdatingLocation()
-            }
-        }
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +51,14 @@ final class ProductViewController: UIViewController {
     
     // MARK: - Helper Functions
     
-    func addToCart() {
+    private func getLocation() {
+        let userDefaults = UserDefaults.standard
+        let location = userDefaults.loadLocation()
+        self.lat = location.coordinate.latitude
+        self.lng = location.coordinate.longitude
+    }
+    
+    private func addToCart() {
         if lng != nil {
             presenter?.addToCart(amount: self.amount,
                                  lat: self.lat,
@@ -123,17 +121,5 @@ extension ProductViewController: ProductView {
         alert.addAction(keepAction)
         alert.addAction(goToCartAction)
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-extension ProductViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let lat = location.coordinate.latitude
-        let lng = location.coordinate.longitude
-        
-        self.lat = lat
-        self.lng = lng
-        locationManager.stopUpdatingLocation()
     }
 }

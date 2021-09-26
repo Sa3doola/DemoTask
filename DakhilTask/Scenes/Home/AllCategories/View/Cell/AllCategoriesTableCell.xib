@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllCategoriesTableCell" rowHeight="170" id="KGk-i7-Jjw" customClass="AllCategoriesTableCell" customModule="DakhilTask" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="170"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KdJ-DS-23s">
+                        <rect key="frame" x="8" y="7" width="311" height="156"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qT9-PU-wwW">
+                        <rect key="frame" x="8" y="7" width="311" height="156"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NameLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjr-D0-8vH">
+                                <rect key="frame" x="112" y="68.5" width="87.5" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59928831335616439" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kjr-D0-8vH" firstAttribute="centerX" secondItem="qT9-PU-wwW" secondAttribute="centerX" id="0b4-hH-2E5"/>
+                            <constraint firstItem="kjr-D0-8vH" firstAttribute="centerY" secondItem="qT9-PU-wwW" secondAttribute="centerY" id="M8b-X9-bHN"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qT9-PU-wwW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="0UM-vb-p4s"/>
+                    <constraint firstItem="KdJ-DS-23s" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="2tl-lf-dnU"/>
+                    <constraint firstItem="KdJ-DS-23s" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="3Z9-7m-Ck1"/>
+                    <constraint firstAttribute="bottom" secondItem="KdJ-DS-23s" secondAttribute="bottom" constant="7" id="IW7-6G-eOS"/>
+                    <constraint firstAttribute="trailing" secondItem="qT9-PU-wwW" secondAttribute="trailing" constant="8" id="Rk4-AE-KFb"/>
+                    <constraint firstAttribute="bottom" secondItem="qT9-PU-wwW" secondAttribute="bottom" constant="7" id="YPb-8J-Fql"/>
+                    <constraint firstItem="qT9-PU-wwW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="jXM-sU-MKI"/>
+                    <constraint firstAttribute="trailing" secondItem="KdJ-DS-23s" secondAttribute="trailing" constant="8" id="r4a-Qn-MOX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="catImageView" destination="KdJ-DS-23s" id="qAy-uR-oe6"/>
+                <outlet property="nameLabel" destination="kjr-D0-8vH" id="3TZ-FM-fWT"/>
+            </connections>
+            <point key="canvasLocation" x="-57.24637681159421" y="118.52678571428571"/>
+        </tableViewCell>
+    </objects>
+</document>
