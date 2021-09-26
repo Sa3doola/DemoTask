@@ -31,8 +31,7 @@ final class OrderDetailsViewController: UIViewController {
     }
     
     private func configureTable() {
-        orderTableView.register(UINib(nibName: "OrderDetailsCell", bundle: nil),
-                                forCellReuseIdentifier: "OrderDetailsCell")
+        orderTableView.register(cell: OrderDetailsCell.self)
     }
     
     @IBAction func completeOrderWasTapped(_ sender: UIButton) {
@@ -46,8 +45,7 @@ extension OrderDetailsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "OrderDetailsCell",
-                                                       for: indexPath) as? OrderDetailsCell else { return UITableViewCell() }
+        let cell = tableView.dequeueCell(indexPath: indexPath) as OrderDetailsCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
     }

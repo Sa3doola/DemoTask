@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainHomeRouter {
     func goToOffer(_ model: ProductModel)
-    func goToCategory(_ model: ProductModel)
+    func goToCategory(_ model: HomeCategory)
     func goToAllCategories()
     func goToCart()
     func goToMenu()
@@ -30,7 +30,7 @@ class MainHomeRouterImplementation: MainHomeRouter {
         self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func goToCategory(_ model: ProductModel) {
+    func goToCategory(_ model: HomeCategory) {
         let vc: CategoryViewController = home.instantiateViewController()
         vc.configurator = CategoryConfiguratorImplementation(model: model)
         self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
@@ -44,10 +44,8 @@ class MainHomeRouterImplementation: MainHomeRouter {
     
     func goToAllCategories() {
         let vc: AllCategoriesViewController = home.instantiateViewController()
+        
         self.MainHomeViewController?.navigationController?.pushViewController(vc, animated: true)
-       // vc.modalTransitionStyle = .coverVertical
-       // vc.modalPresentationStyle = .fullScreen
-       // self.MainHomeViewController?.present(vc, animated: true, completion: nil)
     }
     
     func goToMenu() {

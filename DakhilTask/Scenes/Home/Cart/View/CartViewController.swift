@@ -37,8 +37,7 @@ final class CartViewController: UIViewController {
     // MARK: - Helper Functions
     
     private func configureTableView() {
-        cartTableView.register(UINib(nibName: "CartTableCell", bundle: nil),
-                               forCellReuseIdentifier: "CartTableCell")
+        cartTableView.register(cell: CartTableCell.self)
     }
     
 }
@@ -52,8 +51,7 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CartTableCell",
-                                                       for: indexPath) as?  CartTableCell else { return UITableViewCell() }
+        let cell = tableView.dequeueCell(indexPath: indexPath) as CartTableCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
     }

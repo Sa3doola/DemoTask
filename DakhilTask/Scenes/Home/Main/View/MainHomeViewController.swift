@@ -8,6 +8,13 @@
 import UIKit
 import SideMenu
 
+enum TableSections: CaseIterable {
+    case sideImage
+    case categories
+    case randomCategory
+    case offers
+}
+
 final class MainHomeViewController: UIViewController {
     
     // MARK: - Properties
@@ -44,14 +51,10 @@ final class MainHomeViewController: UIViewController {
     // MARK: - Helper Functions
     
     private func configureTableView() {
-        mainTableView.register(UINib(nibName: "SlideImageCell", bundle: nil),
-                               forCellReuseIdentifier: "SlideImageCell")
-        mainTableView.register(UINib(nibName: "CatgTableCell", bundle: nil),
-                               forCellReuseIdentifier: "CatgTableCell")
-        mainTableView.register(UINib(nibName: "RandomTableCell", bundle: nil),
-                               forCellReuseIdentifier: "RandomTableCell")
-        mainTableView.register(UINib(nibName: "OfferTableCell", bundle: nil),
-                               forCellReuseIdentifier: "OfferTableCell")
+        mainTableView.register(cell: SlideImageCell.self)
+        mainTableView.register(cell: CatgTableCell.self)
+        mainTableView.register(cell: RandomTableCell.self)
+        mainTableView.register(cell: OfferTableCell.self)
     }
     
     private func configureSideMenu() {
@@ -85,35 +88,36 @@ final class MainHomeViewController: UIViewController {
 extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return TableSections.allCases.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
-        case 0:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SlideImageCell", for: indexPath) as? SlideImageCell else { return UITableViewCell() }
+        let section = TableSections.allCases[indexPath.section]
+        
+        switch section {
+        
+        case .sideImage:
+            let cell = tableView.dequeueCell(indexPath: indexPath) as SlideImageCell
             presenter?.configure(cell: cell)
             return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: CatgTableCell.id, for: indexPath) as? CatgTableCell else { return UITableViewCell() }
+        case .categories:
+            let cell = tableView.dequeueCell(indexPath: indexPath) as CatgTableCell
             cell.presenter = self.presenter
             presenter?.configreCategoryTableCell(cell: cell)
             return cell
-        case 2:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "RandomTableCell", for: indexPath) as? RandomTableCell else { return UITableViewCell() }
+        case .randomCategory:
+            let cell = tableView.dequeueCell(indexPath: indexPath) as RandomTableCell
             presenter?.configure(cell: cell)
             return cell
-        case 3:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "OfferTableCell", for: indexPath) as? OfferTableCell else { return UITableViewCell() }
+        case .offers:
+            let cell = tableView.dequeueCell(indexPath: indexPath) as OfferTableCell
             cell.presenter = self.presenter
             presenter?.configureOfferTableCell(cell: cell)
             return cell
-        default:
-            return UITableViewCell()
         }
     }
     

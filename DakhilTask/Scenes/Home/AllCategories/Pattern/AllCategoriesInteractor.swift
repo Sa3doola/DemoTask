@@ -5,8 +5,11 @@
 //  Created by Saad Sherif on 9/26/21.
 //
 
-import Foundation
+import Alamofire
 
- class AllCategoriesInteractor {
+class AllCategoriesInteractor {
     
- }
+    func getAllCategories(page: Int = 1,completion: @escaping completion<AllCategoriesModel>) {
+        
+    }
+}

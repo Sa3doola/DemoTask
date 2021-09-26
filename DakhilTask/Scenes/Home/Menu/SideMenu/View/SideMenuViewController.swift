@@ -25,8 +25,7 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configurator.configure(SideMenuViewController: self)
-        menuTableView.register(UINib(nibName: "SideMenuCell", bundle: nil),
-                               forCellReuseIdentifier: "SideMenuCell")
+        menuTableView.register(cell: SideMenuCell.self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +44,10 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuCell", for: indexPath) as? SideMenuCell else { return UITableViewCell() }
         
+        let cell = tableView.dequeueCell(indexPath: indexPath) as SideMenuCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
+        
         return cell
     }
     

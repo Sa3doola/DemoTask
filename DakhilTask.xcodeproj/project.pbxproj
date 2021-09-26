@@ -798,8 +798,8 @@
 			isa = PBXGroup;
 			children = (
 				D948E9E226F4C1A800074298 /* CategoryPresenter.swift */,
-				D948E9E326F4C1A800074298 /* CategoryRouter.swift */,
 				D948E9E526F4C1A800074298 /* CategoryInteractor.swift */,
+				D948E9E326F4C1A800074298 /* CategoryRouter.swift */,
 				D948E9E626F4C1A800074298 /* CategoryConfigurator.swift */,
 			);
 			path = Pattern;
@@ -1024,8 +1024,8 @@
 			isa = PBXGroup;
 			children = (
 				D9DCF96F270065F100BAE927 /* AllCategoriesPresenter.swift */,
-				D9DCF970270065F100BAE927 /* AllCategoriesRouter.swift */,
 				D9DCF972270065F100BAE927 /* AllCategoriesInteractor.swift */,
+				D9DCF970270065F100BAE927 /* AllCategoriesRouter.swift */,
 				D9DCF973270065F100BAE927 /* AllCategoriesConfigurator.swift */,
 			);
 			path = Pattern;

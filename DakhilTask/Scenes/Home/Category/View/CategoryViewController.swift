@@ -36,8 +36,7 @@ final class CategoryViewController: UIViewController {
     // MARK: - Helper Functions
     
     private func configureTable() {
-        categoriesTableView.register(UINib(nibName: "CategoryTableCell", bundle: nil),
-                                     forCellReuseIdentifier: "CategoryTableCell")
+        categoriesTableView.register(cell: CategoryTableCell.self)
     }
     
     // MARK: - IBActions
@@ -68,9 +67,8 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableCell",
-                                                       for: indexPath) as? CategoryTableCell else { return UITableViewCell() }
-        presenter?.configure(cell: cell, forRow: indexPath.row)
+        let cell = tableView.dequeueCell(indexPath: indexPath) as CategoryTableCell
+        
         return cell
     }
     

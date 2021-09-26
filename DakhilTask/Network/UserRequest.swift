@@ -8,31 +8,35 @@
 import Alamofire
 
 enum APIRouter: URLRequestBuilder {
-    // MARK: - Authentication
     
+    // Authentication
     case login(phone:String , password : String, userType: String, deviceID: String, deviceType: String, uuid: String)
     case register(name: String, phoneNumber: String, city_Id: Int, lat: Double, lon: Double, address: String, password: String, password_confirmation: String, address_type_id: String)
     case getCities
     case activation(phone: String, code: String, deviceID: String, deviceType: String, uuid: String)
     case logOut
     
-    // MARK: - Home
-    
+    // Home
     case homePage
     
-    // MARK: - Cart
+    // Categories
+    case categories
+    case catgegoriesProvider(id: Int, lat: Double, lng: Double, cityID: Int?, rate: String?, providerName: String?)
     
+    // Cart
     case addToCart(uuid: String, lat: Double, lng: Double, address: String, providerID: Int, serviceId: Int, amount: Int)
     case cartDetails(uuid: String)
     case orderDetails(orderID: Int)
     case updateOrderAmount(orderServiceId: Int, amount: Int)
     
-    // MARK: - Setting
-    
+    // Setting
     case setting(type: String)
+    
+    
     
     internal var path: String {
         switch self {
+        // Auth
         case .login:
             return "login"
         case .register:
@@ -41,8 +45,17 @@ enum APIRouter: URLRequestBuilder {
             return "providerRegistrationData"
         case .activation:
             return "user_activation"
+            
+        // Home
         case .homePage:
             return "clientHomePage"
+            
+        // Categories
+        case .categories:
+            return "categories"
+        case .catgegoriesProvider:
+            return "categoryProviders"
+        // Cart
         case .addToCart:
             return "addToCart"
         case .cartDetails:
@@ -51,6 +64,8 @@ enum APIRouter: URLRequestBuilder {
             return "orderDetails"
         case .updateOrderAmount:
             return "updateAmount"
+            
+        // Settings
         case .setting:
             return "sidePages"
         case .logOut:
@@ -95,6 +110,16 @@ enum APIRouter: URLRequestBuilder {
         case .homePage:
             return nil
             
+        // Categories
+        case .categories:
+            return nil
+        case .catgegoriesProvider(let id, let lat, let lng, let cityID, let rate, let providerName):
+            params["category_id"] = id
+            params["lat"] = lat
+            params["lng"] = lng
+            params["city_id"] = cityID
+            params["rate"] = rate
+            params["provider_name"] = providerName
         // Cart
         case .addToCart(let uuid, let lat, let lng, let address,
                         let providerID, let serviceId, let amount):
@@ -121,8 +146,6 @@ enum APIRouter: URLRequestBuilder {
         return params
     }
     
-    
-    
     internal var method: HTTPMethod {
         switch self {
         // Auth
@@ -130,6 +153,9 @@ enum APIRouter: URLRequestBuilder {
             return .post
         // Home
         case .getCities, .homePage:
+            return .get
+        // Categories
+        case .categories, .catgegoriesProvider:
             return .get
         // Cart
         case .addToCart, .cartDetails, .orderDetails, .updateOrderAmount:

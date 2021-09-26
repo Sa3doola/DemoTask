@@ -34,8 +34,7 @@ class CatgTableCell: UITableViewCell, CategoryTableViewCell {
     // MARK: - Helper Functions
 
     func configureCollection() {
-        categoryCollectionView.register(UINib(nibName: "CategoryCollecCell", bundle: nil),
-                                        forCellWithReuseIdentifier: "CategoryCollecCell")
+        categoryCollectionView.register(cell: CategoryCollecCell.self)
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
     }
@@ -60,7 +59,7 @@ extension CatgTableCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollecCell", for: indexPath) as? CategoryCollecCell else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueCell(indexPath: indexPath) as CategoryCollecCell
         presenter?.configureCategoryCollectionCell(cell: cell, row: indexPath.row)
         return cell
     }

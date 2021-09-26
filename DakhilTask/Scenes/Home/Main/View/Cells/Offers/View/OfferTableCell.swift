@@ -24,8 +24,7 @@ class OfferTableCell: UITableViewCell, OfferTableViewCell {
     }
     
     func configureCollection() {
-        offerCollectionView.register(UINib(nibName: "OfferCell", bundle: nil),
-                                     forCellWithReuseIdentifier: "OfferCell")
+        offerCollectionView.register(cell: OfferCell.self)
         offerCollectionView.delegate = self
         offerCollectionView.dataSource = self
     }
@@ -42,9 +41,7 @@ extension OfferTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OfferCell", for: indexPath) as? OfferCell else {
-            return UICollectionViewCell()
-        }
+        let cell = collectionView.dequeueCell(indexPath: indexPath) as OfferCell
         presenter?.configureOfferCollectionCell(cell: cell, row: indexPath.row)
         return cell
     }

@@ -15,9 +15,9 @@ protocol CategoryConfigurator {
 
 class CategoryConfiguratorImplementation {
     
-    let model: ProductModel
+    let model: HomeCategory
     
-    init(model: ProductModel) {
+    init(model: HomeCategory) {
         self.model = model
     }
 
@@ -27,7 +27,6 @@ class CategoryConfiguratorImplementation {
         
         let interactor = CategoryInteractor()
         let presenter = CategoryPresenterImplementation(view: view, router: router,interactor:interactor, model: model)
-        
         
         CategoryViewController.presenter = presenter
     }

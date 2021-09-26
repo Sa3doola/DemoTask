@@ -37,8 +37,7 @@ final class QuestionsViewController: UIViewController {
     // MARK: - Helper Functions
     
     func configureTable() {
-        questionTableView.register(UINib(nibName: "QuestionCell", bundle: nil),
-                                   forCellReuseIdentifier: "QuestionCell")
+        questionTableView.register(cell: QuestionCell.self)
     }
 }
 
@@ -51,7 +50,7 @@ extension QuestionsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as? QuestionCell else { return UITableViewCell() }
+        let cell = tableView.dequeueCell(indexPath: indexPath) as QuestionCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
     }

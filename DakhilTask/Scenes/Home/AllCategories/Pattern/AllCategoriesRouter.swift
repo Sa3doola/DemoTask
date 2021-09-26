@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol AllCategoriesRouter {
-    func goToCategory()
+    func goToCategory(model: HomeCategory)
     func back()
 }
 
@@ -23,9 +23,7 @@ class AllCategoriesRouterImplementation: AllCategoriesRouter {
         self.AllCategoriesViewController = AllCategoriesViewController
     }
     
-    let model = ProductModel(id: 12, status: "", image: URL(string: ""), name: "", nameAr: "", nameEn: "", categoryID: 12, categoryName: "", measurement: "", measurementID: 12, avgRate: 12, discountPercentage: 12, discountStatus: "", serviceWithOfferDescription: "", descriptionAr: "", descriptionEn: "", price: 12, originalPrice: 12, priceAfterDiscount: 12, providerID: 12, providerName: "", storeName: "", distance: 12, isFavourit: "")
-    
-    func goToCategory() {
+    func goToCategory(model: HomeCategory) {
         let vc: CategoryViewController = home.instantiateViewController()
         vc.configurator = CategoryConfiguratorImplementation(model: model)
         self.AllCategoriesViewController?.navigationController?.pushViewController(vc, animated: true)

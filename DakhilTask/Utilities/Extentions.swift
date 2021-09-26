@@ -84,6 +84,39 @@ extension UserDefaults {
         }
         return location
     }
-    
 }
 
+// MARK: - UITableView
+
+extension UITableView {
+    
+    func register<Cell: UITableViewCell>(cell: Cell.Type) {
+        let nibName = String(describing: Cell.self)
+        self.register(UINib(nibName: nibName, bundle: nil), forCellReuseIdentifier: nibName)
+    }
+    
+    func dequeueCell<Cell: UITableViewCell>(indexPath: IndexPath) -> Cell {
+        let identifier = String(describing: Cell.self)
+        guard let cell = self.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? Cell else {
+            fatalError("Error with dequeue cell \(Cell.self)")
+        }
+        return cell
+    }
+}
+
+// MARK: - UICollectionView
+
+extension UICollectionView {
+    
+    func register<Cell: UICollectionViewCell>(cell: Cell.Type) {
+        let nibName = String(describing: Cell.self)
+        self.register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: nibName)
+    }
+    
+    func dequeueCell<Cell: UICollectionViewCell>(indexPath: IndexPath) -> Cell {
+        let identifier = String(describing: Cell.self)
+        guard let cell = self.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? Cell else { fatalError("Error With dequeue Cell \(Cell.self)")
+        }
+        return cell
+    }
+}

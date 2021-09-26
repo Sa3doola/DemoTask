@@ -37,8 +37,7 @@ final class AllCategoriesViewController: UIViewController {
     // MARK: - Helper Functions
     
     private func configureTableView() {
-        tableView.register(UINib(nibName: "AllCategoriesTableCell", bundle: nil),
-                           forCellReuseIdentifier: "AllCategoriesTableCell")
+        tableView.register(cell: AllCategoriesTableCell.self)
     }
     
     // MARK: - IBActions
@@ -56,12 +55,16 @@ final class AllCategoriesViewController: UIViewController {
 
 extension AllCategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.numberOfRow ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "AllCategoriesTableCell", for: indexPath) as? AllCategoriesTableCell else { return UITableViewCell() }
+        let cell = tableView.dequeueCell(indexPath: indexPath) as AllCategoriesTableCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
     }
@@ -70,6 +73,8 @@ extension AllCategoriesViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         presenter?.didSelect(row: indexPath.row)
     }
+    
+    
 }
 
 // MARK: - AllCategoriesView
