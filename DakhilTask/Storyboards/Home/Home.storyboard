@@ -538,12 +538,18 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kpX-zZ-UIP">
                                 <rect key="frame" x="0.0" y="123.5" width="375" height="475.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="OC0-FU-jpL" id="NYL-bN-Qad"/>
                                     <outlet property="delegate" destination="OC0-FU-jpL" id="Ue3-0G-T1C"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data 😴😴 !!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUw-uR-hig">
+                                <rect key="frame" x="119" y="322" width="137" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iIN-Qy-WGz"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -561,11 +567,14 @@
                             <constraint firstItem="RwO-sx-6d6" firstAttribute="leading" secondItem="iIN-Qy-WGz" secondAttribute="leading" constant="16" id="gXG-tS-kEI"/>
                             <constraint firstItem="kpX-zZ-UIP" firstAttribute="leading" secondItem="iIN-Qy-WGz" secondAttribute="leading" id="gpg-kb-BkK"/>
                             <constraint firstItem="kpX-zZ-UIP" firstAttribute="top" secondItem="BPN-bj-asZ" secondAttribute="bottom" constant="8" symbolic="YES" id="jrs-JY-OP2"/>
+                            <constraint firstItem="ZUw-uR-hig" firstAttribute="centerX" secondItem="hwa-hz-Ksp" secondAttribute="centerX" id="q7s-FV-hSe"/>
+                            <constraint firstItem="ZUw-uR-hig" firstAttribute="centerY" secondItem="hwa-hz-Ksp" secondAttribute="centerY" id="twm-v8-sjO"/>
                             <constraint firstItem="7Gz-u1-iqj" firstAttribute="bottom" secondItem="hwa-hz-Ksp" secondAttribute="bottom" id="wet-oU-cqO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="categoriesTableView" destination="kpX-zZ-UIP" id="arn-12-gem"/>
+                        <outlet property="noDataLabel" destination="ZUw-uR-hig" id="zHI-Cc-OTF"/>
                         <outlet property="searchTxtField" destination="IVB-M3-ByJ" id="e9W-ch-fKI"/>
                     </connections>
                 </viewController>

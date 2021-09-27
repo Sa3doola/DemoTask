@@ -20,6 +20,7 @@ class OfferTableCell: UITableViewCell, OfferTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         configureCollection()
     }
     

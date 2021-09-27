@@ -11,6 +11,9 @@ class NavigationManager {
     
     static let shared = NavigationManager()
     
+    let auth = Storyboard.authStoryboard
+    let tabBar = Storyboard.tabBarStoryboard
+    
     enum Screen {
         case auth
         case tabBar
@@ -24,7 +27,7 @@ class NavigationManager {
             guard let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginNavigationController") as? UINavigationController else { return }
             viewController = loginVC
         case .tabBar:
-            guard let baseTabBarVC = UIStoryboard(name: "TabBar", bundle: nil).instantiateViewController(identifier: "BaseTabBarController") as? BaseTabBarController else { return }
+            let baseTabBarVC: BaseTabBarController = tabBar.instantiateViewController()
             viewController = baseTabBarVC
         }
         guard let sceneDelegate = inController.view.window?.windowScene?.delegate as? SceneDelegate,

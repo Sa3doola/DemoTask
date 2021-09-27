@@ -19,6 +19,7 @@ class SlideImageCell: UITableViewCell, SlideImageCellView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         configureSlideImage()
     }
 

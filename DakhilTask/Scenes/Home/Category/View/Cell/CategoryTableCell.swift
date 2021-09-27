@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol CategoryCellView {
+    func configure(model: Provider)
+}
+
 class CategoryTableCell: UITableViewCell, CategoryCellView {
     
     @IBOutlet weak var catImageView: UIImageView!
@@ -27,13 +31,12 @@ class CategoryTableCell: UITableViewCell, CategoryCellView {
         // Configure the view for the selected state
     }
     
-    func configure(model: ProductModel) {
+    func configure(model: Provider) {
         self.catImageView.sd_setImage(with: model.image, completed: nil)
         guard let distance = model.distance else { return }
-        self.providerName.text = model.providerName
+        self.providerName.text = model.name
         self.disatnceLabel.text = "\(distance)KM"
         guard let rate = model.avgRate else { return }
         self.rateLabel.text = "\(rate)"
     }
-    
 }

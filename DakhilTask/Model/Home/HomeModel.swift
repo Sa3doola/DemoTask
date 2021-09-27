@@ -21,7 +21,7 @@ struct DataHomeClass: Codable {
     let categories: [HomeCategory]?
     let randomCategory: HomeCategory?
     let serviceWithOffer: [ProductModel]?
-
+    
     enum CodingKeys: String, CodingKey {
         case slides, categories
         case randomCategory = "random_category"
@@ -32,13 +32,12 @@ struct DataHomeClass: Codable {
 // MARK: - HomeCategory
 struct HomeCategory: Codable {
     let id: Int?
-    let name, categoryDescription: String?
     let image: URL?
-
+    let name, categoryDescription: String?
+    
     enum CodingKeys: String, CodingKey {
-        case id, name
+        case id, image, name
         case categoryDescription = "description"
-        case image
     }
 }
 
@@ -59,7 +58,7 @@ struct ProductModel: Codable {
     let providerName, storeName: String?
     let distance: Double?
     let isFavourit: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, status, image, name
         case nameAr = "name_ar"

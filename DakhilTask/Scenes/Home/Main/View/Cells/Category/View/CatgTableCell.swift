@@ -28,6 +28,7 @@ class CatgTableCell: UITableViewCell, CategoryTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         configureCollection()
     }
     

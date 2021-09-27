@@ -16,7 +16,7 @@ class RandomTableCell: UITableViewCell, RandomCategoryCellView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,6 +26,7 @@ class RandomTableCell: UITableViewCell, RandomCategoryCellView {
     }
     
     func cellConfigure(model: HomeCategory) {
+        
         randomImage.sd_setImage(with: model.image, completed: nil)
         nameLabel.text = model.name
         discriptionLabel.text = model.categoryDescription

@@ -43,6 +43,7 @@ protocol MainHomePresenter {
     func goToMenu()
     func goToCart()
     func goToAllCategories()
+    func goToRandomCategory()
 }
 
 class MainHomePresenterImplementation: MainHomePresenter {
@@ -119,7 +120,8 @@ class MainHomePresenterImplementation: MainHomePresenter {
     }
     
     func didSelectCategory(row: Int) {
-       print("cellRow: \(row)")
+        guard let data = categories?[row] else { return }
+        router.goToCategory(data)
     }
     
     func configureOfferTableCell(cell: OfferTableViewCell) {
@@ -151,5 +153,10 @@ class MainHomePresenterImplementation: MainHomePresenter {
     }
     func goToAllCategories() {
         router.goToAllCategories()
+    }
+    
+    func goToRandomCategory() {
+        guard let random = randomCategory else { return }
+        router.goToCategory(random)
     }
 }

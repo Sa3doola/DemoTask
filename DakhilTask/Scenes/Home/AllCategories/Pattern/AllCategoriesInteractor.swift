@@ -9,7 +9,7 @@ import Alamofire
 
 class AllCategoriesInteractor {
     
-    func getAllCategories(page: Int = 1,completion: @escaping completion<AllCategoriesModel>) {
+    func getAllCategories(completion: @escaping completion<AllCategoriesModel>) {
         
     }
 }

@@ -17,6 +17,7 @@ final class CategoryViewController: UIViewController {
     
     @IBOutlet weak var searchTxtField: UITextField!
     @IBOutlet weak var categoriesTableView: UITableView!
+    @IBOutlet weak var noDataLabel: UILabel!
     
     // MARK: - UIViewController Events
     
@@ -63,12 +64,12 @@ final class CategoryViewController: UIViewController {
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return presenter?.numberOfRows ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(indexPath: indexPath) as CategoryTableCell
-        
+        presenter?.cellConfigure(cell: cell, row: indexPath.row)
         return cell
     }
     
@@ -79,4 +80,18 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - CategoryView
 
-extension CategoryViewController: CategoryView {}
+extension CategoryViewController: CategoryView {
+    func reloadData() {
+        self.categoriesTableView.reloadData()
+    }
+    
+    func hideTableView() {
+        self.categoriesTableView.isHidden = true
+        self.noDataLabel.isHidden = false
+    }
+    
+    func showTableView() {
+        self.noDataLabel.isHidden = true
+        self.categoriesTableView.isHidden = false
+    }
+}

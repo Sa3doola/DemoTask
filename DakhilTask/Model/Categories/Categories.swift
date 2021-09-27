@@ -31,14 +31,14 @@ struct ProviderCategoriesModel: Codable {
 
 // MARK: - ProviderCategoriesData
 struct ProviderCategoriesData: Codable {
-    let categoires: [Provider]?
+    let providers: [Provider]?
     let paginate: Paginate?
 }
 
 // MARK: - Provider
 struct Provider: Codable {
     let id: Int?
-    let image: String?
+    let image: URL?
     let name, address: String?
     let distance: Double?
     let avgRate: Double?

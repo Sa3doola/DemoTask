@@ -9,7 +9,6 @@ import UIKit
 import CoreLocation
 
 // MARK: - Storyboard
-
 enum Storyboard: String {
     case auth = "Main"
     case tabBar = "TabBar"

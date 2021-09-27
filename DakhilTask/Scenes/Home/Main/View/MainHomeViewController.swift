@@ -123,8 +123,9 @@ extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 0 && indexPath.row == 2 {
-           
+        let section = TableSections.allCases[indexPath.section]
+        if section == .randomCategory {
+            presenter?.goToRandomCategory()
         }
     }
 }
