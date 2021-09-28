@@ -51,7 +51,7 @@ final class CategoryViewController: UIViewController {
     }
     
     @IBAction func filterBtnWasTapped(_ sender: UIButton) {
-        
+        presenter?.goToFilter()
     }
     
     @IBAction func specialOrderWasTapped(_ sender: UIButton) {

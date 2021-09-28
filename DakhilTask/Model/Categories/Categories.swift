@@ -60,3 +60,17 @@ struct Provider: Codable {
         case avgRate = "avg_rate"
     }
 }
+
+// MARK: - FilterCitiesModel
+struct FilterCitiesModel: Codable {
+    let key: String?
+    let data: [CitiesModel]?
+    let msg: String?
+    let code: Int?
+}
+
+// MARK: - Datum
+struct CitiesModel: Codable {
+    let id: Int?
+    let name: String?
+}

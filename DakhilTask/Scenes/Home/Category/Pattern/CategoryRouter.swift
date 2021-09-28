@@ -11,6 +11,7 @@ import UIKit
 protocol CategoryRouter {
     func backToHome()
     func goToCart()
+    func goToFilter(delegate: FilterCategoryDelegate)
 }
 
 class CategoryRouterImplementation: CategoryRouter {
@@ -24,6 +25,12 @@ class CategoryRouterImplementation: CategoryRouter {
     
     func goToCart() {
         let vc: CartViewController = homeStoryboard.instantiateViewController()
+        self.CategoryViewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func goToFilter(delegate: FilterCategoryDelegate) {
+        let vc: FilterViewController = homeStoryboard.instantiateViewController()
+        vc.configurator = FilterConfiguratorImplementation(FilterCategoryDelegate: delegate)
         self.CategoryViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     

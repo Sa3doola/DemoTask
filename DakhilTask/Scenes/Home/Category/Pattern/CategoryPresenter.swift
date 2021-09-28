@@ -19,9 +19,10 @@ protocol CategoryPresenter {
     func cellConfigure(cell: CategoryCellView, row: Int)
     func backToHome()
     func goToCart()
+    func goToFilter()
 }
 
-class CategoryPresenterImplementation: CategoryPresenter {
+class CategoryPresenterImplementation: CategoryPresenter, FilterCategoryDelegate {
     
     fileprivate weak var view: CategoryView?
     internal let router: CategoryRouter
@@ -79,6 +80,10 @@ class CategoryPresenterImplementation: CategoryPresenter {
         router.goToCart()
     }
     
+    func goToFilter() {
+        router.goToFilter(delegate: self)
+    }
+    
     func checkIfDataInEmpty() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if self.numberOfRows == 0 {
@@ -87,7 +92,10 @@ class CategoryPresenterImplementation: CategoryPresenter {
                 self.view?.showTableView()
             }
         }
-        
+    }
+    
+    func filter(presenter: FilterPresenter, id: Int, rate: String) {
+        presenter.router.dismiss()
     }
 
 }

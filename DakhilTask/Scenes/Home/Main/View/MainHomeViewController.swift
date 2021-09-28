@@ -99,7 +99,6 @@ extension MainHomeViewController: UITableViewDelegate, UITableViewDataSource {
         let section = TableSections.allCases[indexPath.section]
         
         switch section {
-        
         case .sideImage:
             let cell = tableView.dequeueCell(indexPath: indexPath) as SlideImageCell
             presenter?.configure(cell: cell)

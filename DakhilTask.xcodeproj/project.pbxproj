@@ -97,6 +97,13 @@
 		D96888A927021B4800A141BB /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96888A727021B4800A141BB /* LoadingCell.swift */; };
 		D96888AA27021B4800A141BB /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D96888A827021B4800A141BB /* LoadingCell.xib */; };
 		D985E2CB26F7872F000EAD1C /* CartDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985E2CA26F7872F000EAD1C /* CartDetails.swift */; };
+		D999DD362703294200AEC198 /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999DD312703294200AEC198 /* FilterPresenter.swift */; };
+		D999DD372703294200AEC198 /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999DD322703294200AEC198 /* FilterRouter.swift */; };
+		D999DD382703294200AEC198 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999DD332703294200AEC198 /* FilterViewController.swift */; };
+		D999DD392703294200AEC198 /* FilterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999DD342703294200AEC198 /* FilterInteractor.swift */; };
+		D999DD3A2703294200AEC198 /* FilterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999DD352703294200AEC198 /* FilterConfigurator.swift */; };
+		D999DD4327032C3300AEC198 /* CitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D999DD4127032C3300AEC198 /* CitiesCell.swift */; };
+		D999DD4427032C3300AEC198 /* CitiesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D999DD4227032C3300AEC198 /* CitiesCell.xib */; };
 		D99AD81D270093D2001F25D2 /* Paginate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AD81C270093D2001F25D2 /* Paginate.swift */; };
 		D99AD8272700A618001F25D2 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99AD8262700A618001F25D2 /* Categories.swift */; };
 		D9BCBB2426FB7EC4007382D3 /* CatgTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BCBB2226FB7EC4007382D3 /* CatgTableCell.swift */; };
@@ -231,6 +238,13 @@
 		D96888A727021B4800A141BB /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		D96888A827021B4800A141BB /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		D985E2CA26F7872F000EAD1C /* CartDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetails.swift; sourceTree = "<group>"; };
+		D999DD312703294200AEC198 /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
+		D999DD322703294200AEC198 /* FilterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
+		D999DD332703294200AEC198 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		D999DD342703294200AEC198 /* FilterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInteractor.swift; sourceTree = "<group>"; };
+		D999DD352703294200AEC198 /* FilterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterConfigurator.swift; sourceTree = "<group>"; };
+		D999DD4127032C3300AEC198 /* CitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesCell.swift; sourceTree = "<group>"; };
+		D999DD4227032C3300AEC198 /* CitiesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitiesCell.xib; sourceTree = "<group>"; };
 		D99AD81C270093D2001F25D2 /* Paginate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paginate.swift; sourceTree = "<group>"; };
 		D99AD8262700A618001F25D2 /* Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories.swift; sourceTree = "<group>"; };
 		D9BCBB2226FB7EC4007382D3 /* CatgTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatgTableCell.swift; sourceTree = "<group>"; };
@@ -602,6 +616,7 @@
 				D9C8DD5F26F89C2700CB9BBE /* Menu */,
 				D948E9CA26F4C02600074298 /* Main */,
 				D9DCF96A2700655900BAE927 /* AllCategories */,
+				D999DD302703292B00AEC198 /* Filter */,
 				D948E9CD26F4C0C600074298 /* Category */,
 				D9206F9626F6444900B017B9 /* Product */,
 				D948E9CB26F4C03100074298 /* Cart */,
@@ -864,6 +879,44 @@
 				D94E150126F52B3500687BC3 /* MapViewController.swift */,
 			);
 			path = MapVC;
+			sourceTree = "<group>";
+		};
+		D999DD302703292B00AEC198 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D999DD3C2703294600AEC198 /* View */,
+				D999DD3D2703294B00AEC198 /* Pattern */,
+			);
+			name = Filter;
+			sourceTree = "<group>";
+		};
+		D999DD3C2703294600AEC198 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D999DD332703294200AEC198 /* FilterViewController.swift */,
+				D999DD3F27032BE600AEC198 /* Cell */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D999DD3D2703294B00AEC198 /* Pattern */ = {
+			isa = PBXGroup;
+			children = (
+				D999DD312703294200AEC198 /* FilterPresenter.swift */,
+				D999DD342703294200AEC198 /* FilterInteractor.swift */,
+				D999DD322703294200AEC198 /* FilterRouter.swift */,
+				D999DD352703294200AEC198 /* FilterConfigurator.swift */,
+			);
+			name = Pattern;
+			sourceTree = "<group>";
+		};
+		D999DD3F27032BE600AEC198 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D999DD4127032C3300AEC198 /* CitiesCell.swift */,
+				D999DD4227032C3300AEC198 /* CitiesCell.xib */,
+			);
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		D99AD81B2700937C001F25D2 /* Paginate */ = {
@@ -1188,6 +1241,7 @@
 				D9BD7C4D26FC78CF00F6C2FA /* CategoryCollecCell.xib in Resources */,
 				D90AD5E826FB79D1003F8973 /* OfferTableCell.xib in Resources */,
 				D9BCBB2526FB7EC4007382D3 /* CatgTableCell.xib in Resources */,
+				D999DD4427032C3300AEC198 /* CitiesCell.xib in Resources */,
 				D9DCF97F2700676C00BAE927 /* AllCategoriesTableCell.xib in Resources */,
 				D9F6C2B926F541F5000BE44C /* OfferCell.xib in Resources */,
 				D92CD19526F7534500B9C9B5 /* CartTableCell.xib in Resources */,
@@ -1271,8 +1325,11 @@
 				D9BD7C4C26FC78CF00F6C2FA /* CategoryCollecCell.swift in Sources */,
 				D948E9B626F4BFD600074298 /* SignUpInteractor.swift in Sources */,
 				D99AD8272700A618001F25D2 /* Categories.swift in Sources */,
+				D999DD4327032C3300AEC198 /* CitiesCell.swift in Sources */,
+				D999DD392703294200AEC198 /* FilterInteractor.swift in Sources */,
 				D947A51126F9E28700B0DE60 /* SideMenu.swift in Sources */,
 				D9DB7D4A26F7E1AF002A4065 /* OrderDetailsCell.swift in Sources */,
+				D999DD362703294200AEC198 /* FilterPresenter.swift in Sources */,
 				D9206FA026F6448000B017B9 /* ProductViewController.swift in Sources */,
 				D948E9AA26F4BFB700074298 /* LoginViewController.swift in Sources */,
 				D9F6C28926F53347000BE44C /* UIView+Extentions.swift in Sources */,
@@ -1295,6 +1352,7 @@
 				D90AD5F326FB7A08003F8973 /* SlideImageCell.swift in Sources */,
 				D904B86F26F7D1A100E0B64C /* OrderDetails.swift in Sources */,
 				D948E9EB26F4C1A800074298 /* CategoryConfigurator.swift in Sources */,
+				D999DD3A2703294200AEC198 /* FilterConfigurator.swift in Sources */,
 				D948E9C126F4C00000074298 /* ActivationRouter.swift in Sources */,
 				D948E9EA26F4C1A800074298 /* CategoryInteractor.swift in Sources */,
 				D9C27F2126F9D1BF00A4743B /* SideMenuViewController.swift in Sources */,
@@ -1306,6 +1364,7 @@
 				D9C8DD6B26F89C5D00CB9BBE /* QuestionsInteractor.swift in Sources */,
 				D9206FB526F6648700B017B9 /* OrderDetailsPresenter.swift in Sources */,
 				D948E9E726F4C1A800074298 /* CategoryPresenter.swift in Sources */,
+				D999DD382703294200AEC198 /* FilterViewController.swift in Sources */,
 				D9F6C29326F5341D000BE44C /* UserRequest.swift in Sources */,
 				D92CD19426F7534500B9C9B5 /* CartTableCell.swift in Sources */,
 				D948E9DB26F4C18700074298 /* MainHomePresenter.swift in Sources */,
@@ -1341,6 +1400,7 @@
 				D96888A927021B4800A141BB /* LoadingCell.swift in Sources */,
 				D90AD5E726FB79D1003F8973 /* OfferTableCell.swift in Sources */,
 				D9BCBB2426FB7EC4007382D3 /* CatgTableCell.swift in Sources */,
+				D999DD372703294200AEC198 /* FilterRouter.swift in Sources */,
 				D948E9F326F4C1C600074298 /* CartRouter.swift in Sources */,
 				D948E9DC26F4C18700074298 /* MainHomeRouter.swift in Sources */,
 				D9DEA6D426FB1E1F0038B3D2 /* QuestionCell.swift in Sources */,
