@@ -9,7 +9,9 @@ import Alamofire
 
 class AllCategoriesInteractor {
     
-    func getAllCategories(completion: @escaping completion<AllCategoriesModel>) {
-        
+    func getAllCategories(name: String, page: Int, completion: @escaping completion<AllCategoriesModel>) {
+        AF.request(APIRouter.categories(name: name, page: page)).responseDecodable { (response) in
+            completion(response.result)
+        }
     }
 }

@@ -13,10 +13,15 @@ protocol AllCategoriesView: AnyObject {
 
 protocol AllCategoriesPresenter {
     func viewDidLoad()
+    
+    func fetchMoreData(page: Int)
+    var totalPage: Int { get }
+    // TableView
     var numberOfRow: Int { get }
     func configure(cell: AllCategoriesCellView, forRow row: Int)
-    func didSelect(row: Int)
     
+    // Router
+    func didSelect(row: Int)
     func back()
 }
 
@@ -26,7 +31,9 @@ class AllCategoriesPresenterImplementation: AllCategoriesPresenter {
     internal let router: AllCategoriesRouter
     internal let interactor : AllCategoriesInteractor
     
-    private var models: [HomeCategory]? = []
+    private var models: [Categorry]? = []
+    
+    private var total: Int?
     
     init(view: AllCategoriesView,router: AllCategoriesRouter,interactor:AllCategoriesInteractor) {
         self.view = view
@@ -37,16 +44,28 @@ class AllCategoriesPresenterImplementation: AllCategoriesPresenter {
     // MARK: - FetchDataWithPagination
     
     func viewDidLoad() {
-        fethcData()
+        fetchMoreData(page: 1)
     }
     
-    func fethcData() {
-        interactor.getAllCategories { (result) in
-            switch result {
-            case .success(let model):
-                print(model)
-            case .failure(let error):
-                print(error.localizedDescription)
+    var totalPage: Int {
+        return total ?? 1
+    }
+    
+    func fetchMoreData(page: Int) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+            self.interactor.getAllCategories(name: "", page: page) { [weak self] (result) in
+                guard let self = self else { return }
+                switch result {
+                case .success(let model):
+                    guard let moreData = model.data?.categories else { return }
+                    self.total = model.data?.paginate?.totalPages
+                    self.models?.append(contentsOf: moreData)
+                    DispatchQueue.main.async {
+                        self.view?.reloadData()
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
     }

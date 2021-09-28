@@ -18,26 +18,14 @@ struct HomePageModel: Codable {
 // MARK: - DataHomeClass
 struct DataHomeClass: Codable {
     let slides: [Slide]?
-    let categories: [HomeCategory]?
-    let randomCategory: HomeCategory?
+    let categories: [Categorry]?
+    let randomCategory: Categorry?
     let serviceWithOffer: [ProductModel]?
     
     enum CodingKeys: String, CodingKey {
         case slides, categories
         case randomCategory = "random_category"
         case serviceWithOffer = "service_with_offer"
-    }
-}
-
-// MARK: - HomeCategory
-struct HomeCategory: Codable {
-    let id: Int?
-    let image: URL?
-    let name, categoryDescription: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case id, image, name
-        case categoryDescription = "description"
     }
 }
 

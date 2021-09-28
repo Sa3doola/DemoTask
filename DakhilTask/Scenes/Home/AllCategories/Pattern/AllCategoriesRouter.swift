@@ -9,7 +9,7 @@ import UIKit
 
 
 protocol AllCategoriesRouter {
-    func goToCategory(model: HomeCategory)
+    func goToCategory(model: Categorry)
     func back()
 }
 
@@ -23,11 +23,10 @@ class AllCategoriesRouterImplementation: AllCategoriesRouter {
         self.AllCategoriesViewController = AllCategoriesViewController
     }
     
-    func goToCategory(model: HomeCategory) {
+    func goToCategory(model: Categorry) {
         let vc: CategoryViewController = home.instantiateViewController()
         vc.configurator = CategoryConfiguratorImplementation(model: model)
         self.AllCategoriesViewController?.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     func back() {

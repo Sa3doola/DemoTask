@@ -17,8 +17,20 @@ struct AllCategoriesModel: Codable {
 
 // MARK: - AllCategoriesData
 struct AllCategoriesData: Codable {
-    let categoires: [HomeCategory]?
+    let categories: [Categorry]?
     let paginate: Paginate?
+}
+
+// MARK: - HomeCategory
+struct Categorry: Codable {
+    let id: Int?
+    let image: URL?
+    let name, categoryDescription: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, image, name
+        case categoryDescription = "description"
+    }
 }
 
 // MARK: - ProviderCategories

@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum PaginateSection: CaseIterable {
+    case CategoryCell
+    case LoadingCell
+}
+
 final class AllCategoriesViewController: UIViewController {
     
     // MARK: - Properties
@@ -14,6 +19,9 @@ final class AllCategoriesViewController: UIViewController {
     var configurator = AllCategoriesConfiguratorImplementation()
     
     var presenter: AllCategoriesPresenter?
+    
+    var isLoading: Bool = false
+    var currentPage: Int = 1
     
     // MARK: - IBOutlets
     
@@ -38,6 +46,24 @@ final class AllCategoriesViewController: UIViewController {
     
     private func configureTableView() {
         tableView.register(cell: AllCategoriesTableCell.self)
+        tableView.register(cell: LoadingCell.self)
+    }
+    
+    private func loadMoreData() {
+        guard let totalPage = presenter?.totalPage else { return }
+        if currentPage < totalPage && !isLoading {
+            isLoading = true
+            currentPage += 1
+            presenter?.fetchMoreData(page: currentPage)
+            if isLoading {
+                self.isLoading = false
+                self.tableView.tableFooterView = nil
+            }
+            if totalPage == currentPage {
+                self.isLoading = false
+                
+            }
+        }
     }
     
     // MARK: - IBActions
@@ -53,7 +79,7 @@ final class AllCategoriesViewController: UIViewController {
 
 // MARK: - UITableViewDelegate and DataSource
 
-extension AllCategoriesViewController: UITableViewDelegate, UITableViewDataSource {
+extension AllCategoriesViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -64,9 +90,19 @@ extension AllCategoriesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueCell(indexPath: indexPath) as AllCategoriesTableCell
         presenter?.configure(cell: cell, forRow: indexPath.row)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let number = presenter?.numberOfRow else { return }
+        
+        if indexPath.row  == number - 1 && !isLoading {
+            self.tableView.tableFooterView = createSpinnerFooter()
+            loadMoreData()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -74,7 +110,22 @@ extension AllCategoriesViewController: UITableViewDelegate, UITableViewDataSourc
         presenter?.didSelect(row: indexPath.row)
     }
     
-    
+    func createSpinnerFooter() -> UIView? {
+        
+        guard let totalPage = presenter?.totalPage else { return nil }
+        
+        if currentPage != totalPage {
+            let footer = UIView(frame: CGRect(x: 0, y: 0, width: view.width, height: 100))
+            let spinner = UIActivityIndicatorView(style: .large)
+            spinner.color = .black
+            spinner.center = footer.center
+            footer.addSubview(spinner)
+            spinner.startAnimating()
+            return footer
+        }
+        
+        return nil
+    }
 }
 
 // MARK: - AllCategoriesView
@@ -84,5 +135,4 @@ extension AllCategoriesViewController: AllCategoriesView {
     func reloadData() {
         self.tableView.reloadData()
     }
-    
 }

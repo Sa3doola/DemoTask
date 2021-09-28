@@ -20,7 +20,7 @@ enum APIRouter: URLRequestBuilder {
     case homePage
     
     // Categories
-    case categories
+    case categories(name: String, page: Int)
     case catgegoriesProvider(id: Int, lat: Double, lng: Double, page: Int)
     
     // Cart
@@ -52,7 +52,7 @@ enum APIRouter: URLRequestBuilder {
             
         // Categories
         case .categories:
-            return "categories?name="
+            return "categories"
         case .catgegoriesProvider:
             return "categoryProviders"
         // Cart
@@ -111,8 +111,9 @@ enum APIRouter: URLRequestBuilder {
             return nil
             
         // Categories
-        case .categories:
-            return nil
+        case .categories(let name, let page):
+            params["name"] = name
+            params["page"] = page
         case .catgegoriesProvider(let id, let lat, let lng, let page):
             params["category_id"] = id
             params["lat"] = lat

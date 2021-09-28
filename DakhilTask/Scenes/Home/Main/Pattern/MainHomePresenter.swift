@@ -14,7 +14,7 @@ protocol MainHomeView: AnyObject {
 // Cell
 
 protocol RandomCategoryCellView {
-    func cellConfigure(model: HomeCategory)
+    func cellConfigure(model: Categorry)
 }
 
 // Collection Cells
@@ -55,8 +55,8 @@ class MainHomePresenterImplementation: MainHomePresenter {
     internal let interactor : MainHomeInteractor
     
     private var slides: [Slide]?
-    private var categories: [HomeCategory]?
-    private var randomCategory: HomeCategory?
+    private var categories: [Categorry]?
+    private var randomCategory: Categorry?
     private var serviceWithOffer: [ProductModel]?
     
     // MARK: - Init

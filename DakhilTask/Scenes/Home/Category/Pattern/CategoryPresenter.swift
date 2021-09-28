@@ -27,10 +27,10 @@ class CategoryPresenterImplementation: CategoryPresenter {
     internal let router: CategoryRouter
     internal let interactor : CategoryInteractor
 
-    fileprivate var model: HomeCategory?
+    fileprivate var model: Categorry?
     fileprivate var providerModel: [Provider]?
     
-    init(view: CategoryView,router: CategoryRouter,interactor:CategoryInteractor, model: HomeCategory) {
+    init(view: CategoryView,router: CategoryRouter,interactor:CategoryInteractor, model: Categorry) {
         self.view = view
         self.router = router
         self.interactor = interactor

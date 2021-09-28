@@ -25,7 +25,7 @@ class RandomTableCell: UITableViewCell, RandomCategoryCellView {
         // Configure the view for the selected state
     }
     
-    func cellConfigure(model: HomeCategory) {
+    func cellConfigure(model: Categorry) {
         
         randomImage.sd_setImage(with: model.image, completed: nil)
         nameLabel.text = model.name

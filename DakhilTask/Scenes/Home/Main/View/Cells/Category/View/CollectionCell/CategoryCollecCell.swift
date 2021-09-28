@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol CategoryCollectionCell {
-    func configre(model: HomeCategory)
+    func configre(model: Categorry)
 }
 
 class CategoryCollecCell: UICollectionViewCell, CategoryCollectionCell {
@@ -22,7 +22,7 @@ class CategoryCollecCell: UICollectionViewCell, CategoryCollectionCell {
         // Initialization code
     }
     
-    func configre(model: HomeCategory) {
+    func configre(model: Categorry) {
         CategoryImage.sd_setImage(with: model.image, completed: nil)
         categoryNameLabel.text = model.name
     }

@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 protocol AllCategoriesCellView {
-    func configure(model: HomeCategory)
+    func configure(model: Categorry)
 }
 
 class AllCategoriesTableCell: UITableViewCell, AllCategoriesCellView {
@@ -29,7 +29,7 @@ class AllCategoriesTableCell: UITableViewCell, AllCategoriesCellView {
         // Configure the view for the selected state
     }
     
-    func configure(model: HomeCategory) {
+    func configure(model: Categorry) {
         catImageView.sd_setImage(with: model.image, completed: nil)
         nameLabel.text = model.name
     }
