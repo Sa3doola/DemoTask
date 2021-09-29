@@ -38,5 +38,6 @@ class CategoryTableCell: UITableViewCell, CategoryCellView {
         self.disatnceLabel.text = "\(distance)KM"
         guard let rate = model.avgRate else { return }
         self.rateLabel.text = "\(rate)"
+        self.addressLabel.text = model.address
     }
 }

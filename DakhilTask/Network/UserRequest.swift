@@ -22,6 +22,7 @@ enum APIRouter: URLRequestBuilder {
     // Categories
     case categories(name: String, page: Int)
     case catgegoriesProvider(id: Int, lat: Double, lng: Double, page: Int)
+    case filterCategories(id: Int, lat: Double, lng: Double, rate: String, cityId: Int)
     case filterCities
     
     // Cart
@@ -55,6 +56,8 @@ enum APIRouter: URLRequestBuilder {
         case .categories:
             return "categories"
         case .catgegoriesProvider:
+            return "categoryProviders"
+        case .filterCategories:
             return "categoryProviders"
         case .filterCities:
             return "cities"
@@ -123,6 +126,12 @@ enum APIRouter: URLRequestBuilder {
             params["lat"] = lat
             params["lng"] = lng
             params["page"] = page
+        case .filterCategories(let id, let lat, let lng, let rate, let cityId):
+            params["category_id"] = id
+            params["lat"] = lat
+            params["lng"] = lng
+            params["rate"] = rate
+            params["city_id"] = cityId
         case .filterCities:
         return nil
         // Cart
@@ -160,7 +169,7 @@ enum APIRouter: URLRequestBuilder {
         case .getCities, .homePage:
             return .get
         // Categories
-        case .categories, .catgegoriesProvider, .filterCities:
+        case .categories, .catgegoriesProvider, .filterCities, .filterCategories:
             return .get
         // Cart
         case .addToCart, .cartDetails, .orderDetails, .updateOrderAmount:

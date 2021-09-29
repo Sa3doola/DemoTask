@@ -27,7 +27,7 @@ class CategoryPresenterImplementation: CategoryPresenter, FilterCategoryDelegate
     fileprivate weak var view: CategoryView?
     internal let router: CategoryRouter
     internal let interactor : CategoryInteractor
-
+    
     fileprivate var model: Categorry?
     fileprivate var providerModel: [Provider]?
     
@@ -37,7 +37,6 @@ class CategoryPresenterImplementation: CategoryPresenter, FilterCategoryDelegate
         self.interactor = interactor
         self.model = model
     }
-
     
     func viewDidLoad() {
         fetchData()
@@ -45,18 +44,38 @@ class CategoryPresenterImplementation: CategoryPresenter, FilterCategoryDelegate
     }
     
     func fetchData() {
-   //     guard let id = model?.id else { return }
+        guard let id = model?.id else { return }
         let location = UserDefaults.standard.loadLocation()
         let lat = location.coordinate.latitude
         let lng = location.coordinate.longitude
         let page = 1
-        interactor.getProviderCategories(page: page, id: 71, lat: lat, lng: lng) { [weak self] (result) in
+        interactor.getProviderCategories(page: page, id: id, lat: lat, lng: lng) { [weak self] (result) in
             switch result {
             case .success(let model):
                 self?.providerModel = model.data?.providers
                 DispatchQueue.main.async {
                     self?.view?.reloadData()
                 }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func filter(presenter: FilterPresenter, id: Int, rate: String) {
+        presenter.router.dismiss()
+        guard let id = model?.id else { return }
+        let location = UserDefaults.standard.loadLocation()
+        let lat = location.coordinate.latitude
+        let lng = location.coordinate.longitude
+        interactor.filterCatagories(id: id, lat: lat, lng: lng, cityID: id, rate: rate) { [weak self](result) in
+            guard let self = self else { return }
+            self.providerModel?.removeAll()
+            self.view?.reloadData()
+            switch result {
+            case .success(let model):
+                self.providerModel = model.data?.providers
+                self.view?.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -72,6 +91,18 @@ class CategoryPresenterImplementation: CategoryPresenter, FilterCategoryDelegate
         cell.configure(model: data)
     }
     
+    func checkIfDataInEmpty() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            if self.numberOfRows == 0 {
+                self.view?.hideTableView()
+            } else {
+                self.view?.showTableView()
+            }
+        }
+    }
+    
+    // MARK: - Router
+    
     func backToHome() {
         router.backToHome()
     }
@@ -84,18 +115,4 @@ class CategoryPresenterImplementation: CategoryPresenter, FilterCategoryDelegate
         router.goToFilter(delegate: self)
     }
     
-    func checkIfDataInEmpty() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if self.numberOfRows == 0 {
-                self.view?.hideTableView()
-            } else {
-                self.view?.showTableView()
-            }
-        }
-    }
-    
-    func filter(presenter: FilterPresenter, id: Int, rate: String) {
-        presenter.router.dismiss()
-    }
-
 }

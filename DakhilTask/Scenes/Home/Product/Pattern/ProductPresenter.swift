@@ -49,8 +49,7 @@ class ProductPresenterImplementation: ProductPresenter {
         guard let providerId = model?.providerID else { return }
         guard let serviceId = model?.id else { return }
         
-        interactor.addToCart(uuid: uuid, lat: lat, lng: lng, address: address, providerId: providerId,
-                             serviceId: serviceId, amount: amount) { (result) in
+        interactor.addToCart(uuid: uuid, lat: lat, lng: lng, address: address, providerId: providerId, serviceId: serviceId, amount: amount) { (result) in
             switch result {
             case .success(let model):
                 print(model)

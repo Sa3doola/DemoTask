@@ -130,6 +130,7 @@
 		D9DCF97F2700676C00BAE927 /* AllCategoriesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DCF97D2700676C00BAE927 /* AllCategoriesTableCell.xib */; };
 		D9DEA6D426FB1E1F0038B3D2 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DEA6D226FB1E1F0038B3D2 /* QuestionCell.swift */; };
 		D9DEA6D526FB1E1F0038B3D2 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DEA6D326FB1E1F0038B3D2 /* QuestionCell.xib */; };
+		D9F581A7270467030021FE78 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F581A6270467030021FE78 /* DynamicHeightCollectionView.swift */; };
 		D9F6C28626F5331E000BE44C /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C28526F5331E000BE44C /* Extentions.swift */; };
 		D9F6C28926F53347000BE44C /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C28826F53347000BE44C /* UIView+Extentions.swift */; };
 		D9F6C29326F5341D000BE44C /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F6C29226F5341D000BE44C /* UserRequest.swift */; };
@@ -271,6 +272,7 @@
 		D9DCF97D2700676C00BAE927 /* AllCategoriesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCategoriesTableCell.xib; sourceTree = "<group>"; };
 		D9DEA6D226FB1E1F0038B3D2 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		D9DEA6D326FB1E1F0038B3D2 /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
+		D9F581A6270467030021FE78 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		D9F6C28526F5331E000BE44C /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		D9F6C28826F53347000BE44C /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
 		D9F6C29226F5341D000BE44C /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 				D9F6C28826F53347000BE44C /* UIView+Extentions.swift */,
 				D9F6C28526F5331E000BE44C /* Extentions.swift */,
 				D9F6C2A726F534E3000BE44C /* Validation.swift */,
+				D9F581A6270467030021FE78 /* DynamicHeightCollectionView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1366,6 +1369,7 @@
 				D948E9E726F4C1A800074298 /* CategoryPresenter.swift in Sources */,
 				D999DD382703294200AEC198 /* FilterViewController.swift in Sources */,
 				D9F6C29326F5341D000BE44C /* UserRequest.swift in Sources */,
+				D9F581A7270467030021FE78 /* DynamicHeightCollectionView.swift in Sources */,
 				D92CD19426F7534500B9C9B5 /* CartTableCell.swift in Sources */,
 				D948E9DB26F4C18700074298 /* MainHomePresenter.swift in Sources */,
 				D948E9C226F4C00000074298 /* ActivationViewController.swift in Sources */,

@@ -17,7 +17,8 @@ final class FilterViewController: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var citiesCollectionView: UICollectionView!
+    @IBOutlet weak var citiesCollectionView: DynamicHeightCollectionView!
+    @IBOutlet weak var heightForCollectionView: NSLayoutConstraint!
     @IBOutlet weak var heighBtn: UIButton!
     @IBOutlet weak var lowBtn: UIButton!
     
@@ -68,7 +69,7 @@ final class FilterViewController: UIViewController {
     }
 }
 
-extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter?.numberOfRows ?? 0
@@ -83,10 +84,20 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter?.didSelect(row: indexPath.row)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfColumns: CGFloat = 2
+        let spaceBetweenCells: CGFloat = 5
+        let padding: CGFloat = 5
+        let cellDimension = ((collectionView.bounds.width - padding) - (numberOfColumns - 1) * spaceBetweenCells) / numberOfColumns
+        return CGSize(width: cellDimension, height: 50)
+    }
 }
 
 extension FilterViewController: FilterView {
     func reloadData() {
         self.citiesCollectionView.reloadData()
+        self.citiesCollectionView.layoutIfNeeded()
+        self.heightForCollectionView.constant = self.citiesCollectionView.contentSize.height
     }
 }
