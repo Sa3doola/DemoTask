@@ -67,10 +67,23 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="afd-H3-ECG" kind="relationship" relationship="rootViewController" id="GE4-Ef-F65"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wB7-5K-HUi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="817" y="392"/>
+        </scene>
+        <!--ProfileViewController-->
+        <scene sceneID="zoT-5G-HkF">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Profile" storyboardName="Profile" referencedIdentifier="ProfileViewController" id="afd-H3-ECG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ak3-FM-F0M"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nVj-Gy-63t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="817" y="893"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NoN-nw-ySJ">

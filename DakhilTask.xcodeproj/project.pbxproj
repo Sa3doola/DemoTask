@@ -128,6 +128,12 @@
 		D9DCF978270065F100BAE927 /* AllCategoriesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DCF973270065F100BAE927 /* AllCategoriesConfigurator.swift */; };
 		D9DCF97E2700676C00BAE927 /* AllCategoriesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DCF97C2700676C00BAE927 /* AllCategoriesTableCell.swift */; };
 		D9DCF97F2700676C00BAE927 /* AllCategoriesTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DCF97D2700676C00BAE927 /* AllCategoriesTableCell.xib */; };
+		D9DE8A0027049DEA006E44A0 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DE89FF27049DEA006E44A0 /* Profile.storyboard */; };
+		D9DE8A0827049E7B006E44A0 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE8A0327049E7B006E44A0 /* ProfilePresenter.swift */; };
+		D9DE8A0927049E7B006E44A0 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE8A0427049E7B006E44A0 /* ProfileRouter.swift */; };
+		D9DE8A0A27049E7B006E44A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE8A0527049E7B006E44A0 /* ProfileViewController.swift */; };
+		D9DE8A0B27049E7B006E44A0 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE8A0627049E7B006E44A0 /* ProfileInteractor.swift */; };
+		D9DE8A0C27049E7B006E44A0 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DE8A0727049E7B006E44A0 /* ProfileConfigurator.swift */; };
 		D9DEA6D426FB1E1F0038B3D2 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9DEA6D226FB1E1F0038B3D2 /* QuestionCell.swift */; };
 		D9DEA6D526FB1E1F0038B3D2 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DEA6D326FB1E1F0038B3D2 /* QuestionCell.xib */; };
 		D9F581A7270467030021FE78 /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F581A6270467030021FE78 /* DynamicHeightCollectionView.swift */; };
@@ -270,6 +276,12 @@
 		D9DCF973270065F100BAE927 /* AllCategoriesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesConfigurator.swift; sourceTree = "<group>"; };
 		D9DCF97C2700676C00BAE927 /* AllCategoriesTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesTableCell.swift; sourceTree = "<group>"; };
 		D9DCF97D2700676C00BAE927 /* AllCategoriesTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCategoriesTableCell.xib; sourceTree = "<group>"; };
+		D9DE89FF27049DEA006E44A0 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		D9DE8A0327049E7B006E44A0 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		D9DE8A0427049E7B006E44A0 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		D9DE8A0527049E7B006E44A0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D9DE8A0627049E7B006E44A0 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		D9DE8A0727049E7B006E44A0 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
 		D9DEA6D226FB1E1F0038B3D2 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		D9DEA6D326FB1E1F0038B3D2 /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
 		D9F581A6270467030021FE78 /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -523,6 +535,7 @@
 				D948E98026F4BC9900074298 /* Auth */,
 				D948E98126F4BCA200074298 /* TabBar */,
 				D948E98226F4BCAA00074298 /* Home */,
+				D9DE89FE27049DA7006E44A0 /* Profile */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -533,6 +546,7 @@
 				D948E98526F4BCCF00074298 /* Base */,
 				D948E98626F4BCE600074298 /* Auth */,
 				D948E98426F4BCC900074298 /* Home */,
+				D9DE8A0227049E63006E44A0 /* Profile */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1102,6 +1116,58 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		D9DE89FE27049DA7006E44A0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D9DE89FF27049DEA006E44A0 /* Profile.storyboard */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D9DE8A0227049E63006E44A0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D9DE8A0F27049EDB006E44A0 /* Profile */,
+				D9DE8A1027049EE7006E44A0 /* EditProfile */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D9DE8A0F27049EDB006E44A0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D9DE8A1127049EFA006E44A0 /* View */,
+				D9DE8A1227049EFE006E44A0 /* Pattern */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D9DE8A1027049EE7006E44A0 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		D9DE8A1127049EFA006E44A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D9DE8A0527049E7B006E44A0 /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D9DE8A1227049EFE006E44A0 /* Pattern */ = {
+			isa = PBXGroup;
+			children = (
+				D9DE8A0327049E7B006E44A0 /* ProfilePresenter.swift */,
+				D9DE8A0627049E7B006E44A0 /* ProfileInteractor.swift */,
+				D9DE8A0427049E7B006E44A0 /* ProfileRouter.swift */,
+				D9DE8A0727049E7B006E44A0 /* ProfileConfigurator.swift */,
+			);
+			path = Pattern;
+			sourceTree = "<group>";
+		};
 		D9F4258726FB6E6800F53CCD /* SlideImageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1236,6 +1302,7 @@
 			files = (
 				D948E99226F4BDE500074298 /* TabBar.storyboard in Resources */,
 				D9DEA6D526FB1E1F0038B3D2 /* QuestionCell.xib in Resources */,
+				D9DE8A0027049DEA006E44A0 /* Profile.storyboard in Resources */,
 				D948E99526F4BDF100074298 /* Home.storyboard in Resources */,
 				D948E97126F4B99300074298 /* LaunchScreen.storyboard in Resources */,
 				D9206FC026F6654400B017B9 /* CategoryTableCell.xib in Resources */,
@@ -1344,6 +1411,7 @@
 				D9DCF976270065F100BAE927 /* AllCategoriesViewController.swift in Sources */,
 				D948E99F26F4BF7000074298 /* BaseTabBarController.swift in Sources */,
 				D9085B0526FA2EBA002B379B /* TermsAndConditions.swift in Sources */,
+				D9DE8A0B27049E7B006E44A0 /* ProfileInteractor.swift in Sources */,
 				D9F6C29626F53429000BE44C /* URLRequest.swift in Sources */,
 				D948E96926F4B99200074298 /* SplashViewController.swift in Sources */,
 				D9206FA226F6448000B017B9 /* ProductConfigurator.swift in Sources */,
@@ -1375,9 +1443,11 @@
 				D948E9C226F4C00000074298 /* ActivationViewController.swift in Sources */,
 				D9F6C2B826F541F5000BE44C /* OfferCell.swift in Sources */,
 				D948E9A926F4BFB700074298 /* LoginRouter.swift in Sources */,
+				D9DE8A0C27049E7B006E44A0 /* ProfileConfigurator.swift in Sources */,
 				D9085AE026FA2CC3002B379B /* TermsAndConditionsPresenter.swift in Sources */,
 				D9F6C29C26F5343F000BE44C /* RegisterModel.swift in Sources */,
 				D9085B0B26FA2F7E002B379B /* ContactUs.swift in Sources */,
+				D9DE8A0927049E7B006E44A0 /* ProfileRouter.swift in Sources */,
 				D95C631826F9FCEB007B8F2B /* SideMenuInteractor.swift in Sources */,
 				D9206FB726F6648700B017B9 /* OrderDetailsViewController.swift in Sources */,
 				D9206FB926F6648700B017B9 /* OrderDetailsConfigurator.swift in Sources */,
@@ -1399,6 +1469,7 @@
 				D9DCF977270065F100BAE927 /* AllCategoriesInteractor.swift in Sources */,
 				D948E9B426F4BFD600074298 /* SignUpRouter.swift in Sources */,
 				D948E9B526F4BFD600074298 /* SignUpViewController.swift in Sources */,
+				D9DE8A0827049E7B006E44A0 /* ProfilePresenter.swift in Sources */,
 				D9206FA126F6448000B017B9 /* ProductInteractor.swift in Sources */,
 				D948E96526F4B99200074298 /* AppDelegate.swift in Sources */,
 				D96888A927021B4800A141BB /* LoadingCell.swift in Sources */,
@@ -1429,6 +1500,7 @@
 				D948E9C026F4C00000074298 /* ActivationPresenter.swift in Sources */,
 				D9206FB626F6648700B017B9 /* OrderDetailsRouter.swift in Sources */,
 				D9DCF978270065F100BAE927 /* AllCategoriesConfigurator.swift in Sources */,
+				D9DE8A0A27049E7B006E44A0 /* ProfileViewController.swift in Sources */,
 				D9085AF926FA2CF0002B379B /* AboutUsPresenter.swift in Sources */,
 				D90AD5EE26FB79EB003F8973 /* RandomTableCell.swift in Sources */,
 				D9C8DD6926F89C5D00CB9BBE /* QuestionsRouter.swift in Sources */,
