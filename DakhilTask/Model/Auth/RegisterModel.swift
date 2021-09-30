@@ -9,13 +9,13 @@ import Foundation
 
 struct RegisterModel: Codable {
     let key: String?
-    let data: Data?
+    let data: RegisterData?
     let msg: String?
     let code: Int?
 }
 
 // MARK: - Data
-struct Data: Codable {
+struct RegisterData: Codable {
     let userPhone: String?
 
     enum CodingKeys: String, CodingKey {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SideMenuViewController: UIViewController {
     
@@ -31,8 +32,13 @@ class SideMenuViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        configureImage()
     }
     
+    func configureImage() {
+        guard let image = UserDefaults.standard.loadImage() else { return }
+        userImageView.sd_setImage(with: URL(string: image), completed: nil)
+    }
 }
 
 // MARK: - UITableViewDelegate and DataSource

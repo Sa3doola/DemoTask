@@ -34,7 +34,10 @@ enum APIRouter: URLRequestBuilder {
     // Setting
     case setting(type: String)
     
+    // profile
+    case profile
     
+    case updateProfile(name: String, phone: String, cityId: Int, uuid: String)
     
     internal var path: String {
         switch self {
@@ -47,6 +50,8 @@ enum APIRouter: URLRequestBuilder {
             return "providerRegistrationData"
         case .activation:
             return "user_activation"
+        case .logOut:
+            return "logOut"
             
         // Home
         case .homePage:
@@ -74,9 +79,11 @@ enum APIRouter: URLRequestBuilder {
         // Settings
         case .setting:
             return "sidePages"
-        case .logOut:
-            return "logOut"
         
+        case .profile:
+            return "clientProfile"
+        case .updateProfile:
+            return "updateClient"
         }
     }
     
@@ -134,6 +141,7 @@ enum APIRouter: URLRequestBuilder {
             params["city_id"] = cityId
         case .filterCities:
         return nil
+            
         // Cart
         case .addToCart(let uuid, let lat, let lng, let address,
                         let providerID, let serviceId, let amount):
@@ -156,6 +164,15 @@ enum APIRouter: URLRequestBuilder {
         case .setting(let type):
             params["type"] = type
             
+        // Profile
+        case .profile:
+            return nil
+            
+        case .updateProfile(let name, let phone, let citID, let uuid):
+            params["name"] = name
+            params["phone"] = phone
+            params["city_id"] = citID
+            params["uuid"] = uuid
         }
         return params
     }
@@ -177,6 +194,11 @@ enum APIRouter: URLRequestBuilder {
         // Setting
         case .setting:
             return .get
+        // Profile
+        case .profile:
+            return .get
+        case .updateProfile:
+            return .post
         }
     }
 }

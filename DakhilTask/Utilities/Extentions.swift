@@ -13,6 +13,7 @@ enum Storyboard: String {
     case auth = "Main"
     case tabBar = "TabBar"
     case home = "Home"
+    case profile = "Profile"
     
     static var authStoryboard: UIStoryboard {
         return UIStoryboard(name: Storyboard.auth.rawValue, bundle: nil)
@@ -24,6 +25,10 @@ enum Storyboard: String {
     
     static var homeSrotyboard: UIStoryboard {
         return UIStoryboard(name: Storyboard.home.rawValue, bundle: nil)
+    }
+    
+    static var profileStoryboard: UIStoryboard {
+        return UIStoryboard(name: Storyboard.profile.rawValue, bundle: nil)
     }
 }
 
@@ -58,7 +63,16 @@ extension UserDefaults {
         }
     }
     
+    func saveImage(image: String?) {
+        UserDefaults.standard.setValue(image, forKey: "ProfileImage")
+    }
+    
     // MARK: - Load
+    
+    func loadImage() -> String? {
+        guard let image = UserDefaults.standard.value(forKey: "ProfileImage") else { return "" }
+        return image as? String
+    }
     
     func loadToken() -> String? {
         let token = UserDefaults.standard.value(forKey: "userToken")

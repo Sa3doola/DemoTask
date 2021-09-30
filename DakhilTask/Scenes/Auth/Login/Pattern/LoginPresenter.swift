@@ -22,6 +22,7 @@ class LoginPresenterImplementation: LoginPresenter {
     internal let router: LoginRouter
     internal let interactor : LoginInteractor
     
+    let defaults = UserDefaults.standard
     
     init(view: LoginView,router: LoginRouter,interactor:LoginInteractor) {
         self.view = view
@@ -41,8 +42,8 @@ class LoginPresenterImplementation: LoginPresenter {
     }
     
     func loginRequest(phone: String, password: String) {
-        UserDefaults.standard.saveUUID(uuid: NSUUID().uuidString)
-        guard let uuid = UserDefaults.standard.loadUUID() else  { return }
+        defaults.saveUUID(uuid: NSUUID().uuidString)
+        guard let uuid = defaults.loadUUID() else  { return }
         print("LoginUUID: \(uuid)")
         interactor.login(phone: phone, password: password, userType: "client",
                          deviceId: "123654123654", deviceType: "ios",
@@ -55,7 +56,9 @@ class LoginPresenterImplementation: LoginPresenter {
                     let resultModel = try ValidateService.validate(model: model)
                     
                     let token = resultModel.data?.userBaseInfo?.token
-                    UserDefaults.standard.saveToken(token: token)
+                    let image = resultModel.data?.userBaseInfo?.image
+                    self.defaults.saveToken(token: token)
+                    self.defaults.saveImage(image: image)
                     self.router.goToHome()
                 } catch {
                     self.view?.showAlert(error.localizedDescription)
